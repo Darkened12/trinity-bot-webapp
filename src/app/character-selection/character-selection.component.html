@@ -2,17 +2,17 @@
   <div class="input-group-prepend">
     <span class="input-group-text" id="basic-addon1">🔎</span>
   </div>
-  <form class="example-form">
+  <form>
     <input type="text"
             class="form-control"
-           placeholder="Character"
+           placeholder="{{control.valueChanges | async}}"
            [formControl]="control"
            [matAutocomplete]="auto">
     <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let name of characterObservables[0] | async">
+      <mat-option *ngFor="let name of characterObservables[0] | async" (onSelectionChange)="control.setValue">
         {{name.replace('_', ' ')}}
       </mat-option>
     </mat-autocomplete>
   </form>
-  
+  <p style="color: white;">{{ control.valueChanges | async }}</p>
 </div>

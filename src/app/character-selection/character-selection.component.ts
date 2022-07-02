@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { BackendService } from '../services/backend.service';
 import { CharacterModel } from './character-selection.models';
 
@@ -14,32 +14,33 @@ export class CharacterSelectionComponent implements OnInit {
   characters: CharacterModel[] = [];
   options: string[] = ['a'];
 
-  control = new FormControl('');
+  control = new FormControl('Character');
   characterObservables: Observable<string[]>[] = [];
+  optionSelectionSubject = new Subject<string>();
+  private _selectedOption: string = '';
+  selectedOption = '';
+  value: string = '';
 
-  constructor(private _backend: BackendService) { }
+  constructor(private _backend: BackendService) {
+    this.optionSelectionSubject.subscribe({next: (value) => this.setSelectedOption(value)});
+   }
 
-  private _updateCharacters(characterNames: string[], gameName: string): void {
-    for (let name of characterNames) {
-      console.log(name);
-      this.characters.push({'name': name, 'gameName': gameName});
-    }
-    console.log(characterNames);
-    console.log(this.characters);
-    this.options = this._getParseCharacterNames();
+  getSelectedOption(): string {
+    return this._selectedOption;
   }
 
-  private _getParseCharacterNames(): string[] {
-    let parsedNames: string[] = [];
-    this.characters.forEach((characterObj: CharacterModel) => parsedNames.push(
-      `(${characterObj.gameName}) ${characterObj.name}`
-    ))
-    return parsedNames;
+  setSelectedOption(selectedOption: string): void {
+    this._selectedOption = selectedOption;
   }
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  }
+
+  onOptionSelection(event: Event) {
+    let value = (event.target as HTMLInputElement).value;
+    this.optionSelectionSubject.next(value);
   }
 
   ngOnInit(): void {
