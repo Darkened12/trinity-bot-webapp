@@ -2,17 +2,19 @@
   <div class="input-group-prepend">
     <span class="input-group-text" id="basic-addon1">🔎</span>
   </div>
-  <form>
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
     <input type="text"
             class="form-control"
-           placeholder="{{control.valueChanges | async}}"
-           [formControl]="control"
+           placeholder="a"
+           matInput
+           formControlName="characterName"
            [matAutocomplete]="auto">
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let name of characterObservables[0] | async" (onSelectionChange)="control.setValue">
+    <mat-autocomplete #auto="matAutocomplete"
+                      (optionSelected)="optionSelected = $event.option.value">
+      <mat-option *ngFor="let name of characterObservables[0] | async" [value]="name">
         {{name.replace('_', ' ')}}
       </mat-option>
     </mat-autocomplete>
   </form>
-  <p style="color: white;">{{ control.valueChanges | async }}</p>
+  <p style="color: white;">{{ optionSelected }}</p>
 </div>

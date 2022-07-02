@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { MatOptionSelectionChange } from '@angular/material/core';
 import { Observable, Subject } from 'rxjs';
 import { BackendService } from '../services/backend.service';
 import { CharacterModel } from './character-selection.models';
@@ -13,24 +15,25 @@ import { CharacterModel } from './character-selection.models';
 export class CharacterSelectionComponent implements OnInit {
   characters: CharacterModel[] = [];
   options: string[] = ['a'];
+  optionSelected = '';
 
-  control = new FormControl('Character');
+  
   characterObservables: Observable<string[]>[] = [];
-  optionSelectionSubject = new Subject<string>();
-  private _selectedOption: string = '';
-  selectedOption = '';
-  value: string = '';
+  formGroup: FormGroup = this.fb.group({
+    'characterName' : ['']
+  })
 
-  constructor(private _backend: BackendService) {
-    this.optionSelectionSubject.subscribe({next: (value) => this.setSelectedOption(value)});
-   }
+  constructor(private _backend: BackendService, private fb: FormBuilder) {}
 
-  getSelectedOption(): string {
-    return this._selectedOption;
+  initForm(){
+    this.formGroup.get('characterName')?.valueChanges.subscribe(response => {
+      console.log('data is ', response);
+      
+    })
   }
 
-  setSelectedOption(selectedOption: string): void {
-    this._selectedOption = selectedOption;
+  onSubmit() {
+    console.log(this.optionSelected);
   }
 
   private _filter(value: string): string[] {
@@ -38,14 +41,15 @@ export class CharacterSelectionComponent implements OnInit {
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
 
-  onOptionSelection(event: Event) {
-    let value = (event.target as HTMLInputElement).value;
-    this.optionSelectionSubject.next(value);
+  onOptionSelection(event: any) {
+    // let value = (event.target as HTMLInputElement).value;
+    console.log(event.option)
+    
   }
 
   ngOnInit(): void {
     const characterObservables: Observable<string[]>[] = this._backend.getAllCharacterNames();
     characterObservables.forEach((observable: Observable<string[]>) => this.characterObservables.push(observable)) 
-
+    this.initForm();
   }
 }
