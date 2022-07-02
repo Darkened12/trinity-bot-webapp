@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { BackendService } from '../services/backend.service';
 import { CharacterModel } from './character-selection.models';
@@ -13,6 +14,7 @@ export class CharacterSelectionComponent implements OnInit {
   characters: CharacterModel[] = [];
   options: string[] = ['a'];
 
+  control = new FormControl('');
   characterObservables: Observable<string[]>[] = [];
 
   constructor(private _backend: BackendService) { }
