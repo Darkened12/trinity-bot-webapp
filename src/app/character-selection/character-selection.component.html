@@ -4,8 +4,8 @@
     <mat-label>Character</mat-label>
     <input matInput type="text" class="input-group" [matAutocomplete]="auto">
     <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let option of options">
-          {{ option }}
+        <mat-option *ngFor="let name of characterObservables[0] | async">
+          {{ name }}
         </mat-option>
     </mat-autocomplete>
   </mat-form-field>

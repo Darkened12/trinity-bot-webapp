@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { BackendService } from '../services/backend.service';
 import { CharacterModel } from './character-selection.models';
 
@@ -11,7 +12,9 @@ import { CharacterModel } from './character-selection.models';
 export class CharacterSelectionComponent implements OnInit {
   characters: CharacterModel[] = [];
   options: string[] = ['a'];
-  
+
+  characterObservables: Observable<string[]>[] = [];
+
   constructor(private _backend: BackendService) { }
 
   private _updateCharacters(characterNames: string[], gameName: string): void {
@@ -38,9 +41,8 @@ export class CharacterSelectionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const characterNames: string[][] = this._backend.getAllCharacterNames();
-    this._updateCharacters(characterNames[0], 'BBCF');
-    this._updateCharacters(characterNames[1], 'BBTAG');
+    const characterObservables: Observable<string[]>[] = this._backend.getAllCharacterNames();
+    characterObservables.forEach((observable: Observable<string[]>) => this.characterObservables.push(observable)) 
 
   }
 }
