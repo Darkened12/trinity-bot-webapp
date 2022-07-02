@@ -1,0 +1,12 @@
+<div class="input-group flex-nowrap p-1 m-4">
+  <!-- <span class="input-group-text mx-1 rounded" id="addon-wrapping">🔎</span> -->
+  <mat-form-field>
+    <mat-label>Character</mat-label>
+    <input matInput type="text" class="input-group" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of options">
+          {{ option }}
+        </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</div>
