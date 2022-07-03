@@ -5,12 +5,11 @@
   <form [formGroup]="formGroup">
     <input type="text"
             class="form-control"
-           placeholder="{{formGroup.get('characterName')?.valueChanges | async}}" 
+           placeholder="{{optionSelected | async}}" 
            matInput
            formControlName="characterName"
            [matAutocomplete]="auto">
-    <mat-autocomplete #auto="matAutocomplete"
-                      (optionSelected)="optionSelected = $event.option.value.replace('_', ' ')">
+    <mat-autocomplete #auto="matAutocomplete">                  
       <mat-option *ngFor="let name of characterObservables[0] | async" [value]="name">
         {{ name.replace('_', ' ') }}
       </mat-option>

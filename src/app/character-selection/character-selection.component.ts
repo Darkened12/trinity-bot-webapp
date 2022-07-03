@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { Observable, map } from 'rxjs';
+import { Observable, Subject, map, Subscriber } from 'rxjs';
 import { BackendService } from '../services/backend.service';
 
 
@@ -11,19 +11,21 @@ import { BackendService } from '../services/backend.service';
 })
 export class CharacterSelectionComponent implements OnInit {
 
-  optionSelected = '';
   characterObservables: Observable<string[]>[] = [];
-  formGroup: FormGroup = this.fb.group({
+  optionSelected: Subject<string> = new Subject();
+  formGroup: FormGroup = this._fb.group({
     'characterName' : ['']
   })
 
-  constructor(private _backend: BackendService, private fb: FormBuilder) { }
+  constructor(
+    private _backend: BackendService, 
+    private _fb: FormBuilder
+  ) { }
 
-  initForm(){
+  initForm() {
     const formObservable = this.formGroup.get('characterName')?.valueChanges;
     formObservable?.subscribe(response => {
-      console.log('data is ', response);
-      
+      this.optionSelected.next(response);
     })
   }
 
