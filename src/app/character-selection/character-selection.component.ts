@@ -47,6 +47,34 @@ export class CharacterSelectionComponent implements OnInit {
     return matchedOptions.map(this._parseCharacterName);
   }
 
+  getGamePrefix(selectedOption: string): string {
+    if (selectedOption.includes('BBCF')) {
+      return 'BBCF';
+    } 
+    else if (selectedOption.includes('BBTAG')) {
+      return 'BBTAG';
+    }
+    throw new Error('Not Implemented')
+  }
+
+  removeGamePrefix(selectedOption: string): string {
+    return selectedOption.replace('(BBCF) ', '').replace('(BBTAG) ', '');
+  }
+
+  getIconUrl(selectedOption: string): string {
+    if (selectedOption.includes('BBCF')) {
+      let parsedOption: string = selectedOption.replace('(BBCF) ', '');
+      parsedOption = parsedOption.replace(' ', '_');
+      return `${this._backend.endpoint}cf/${parsedOption}/icon.png`
+    } 
+    else if (selectedOption.includes('BBTAG')) {
+      let parsedOption: string = selectedOption.replace('(BBTAG) ', '');
+      parsedOption = parsedOption.replace(' ', '_');
+      return `${this._backend.endpoint}tag/${parsedOption}/icon.png`
+    }
+    throw new Error('Not Implemented');
+  }
+
   initForm() {
     const formObservable = this.formGroup.get('characterName')?.valueChanges;
     formObservable?.subscribe(response => {
