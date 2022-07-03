@@ -11,7 +11,10 @@
            [matAutocomplete]="auto">
     <mat-autocomplete #auto="matAutocomplete">                  
       <mat-option *ngFor="let name of characterObservables[0] | async" [value]="name">
-        {{ name.replace('_', ' ') }}
+        (BBCF) {{ name.replace('_', ' ') }}
+      </mat-option>
+      <mat-option *ngFor="let name of characterObservables[1] | async" [value]="name">
+        (BBTAG) {{ name.replace('_', ' ') }}
       </mat-option>
     </mat-autocomplete>
   </form>
