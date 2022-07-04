@@ -14,7 +14,7 @@ export class CharacterSelectionComponent implements OnInit {
   characterObservables: Observable<string[]>[] = [];
   optionSelected: Subject<string> = new Subject();
 
-  matchedOptions: string[] = [];
+  private _matchedOptions: string[] = [];
   formGroup: FormGroup = this._fb.group({
     'characterName' : ['']
   })
@@ -23,16 +23,16 @@ export class CharacterSelectionComponent implements OnInit {
     private _backend: BackendService, 
     private _fb: FormBuilder
   ) { this.optionSelected.subscribe((option: string) => {
-        this.matchedOptions = [];
+        this._matchedOptions = [];
 
         this.characterObservables[0].subscribe((names: string[]) => {
           this._getMatchedNames(names, option).
-            forEach((name: string) => this.matchedOptions.push(`(BBCF) ${name}`));
+            forEach((name: string) => this._matchedOptions.push(`(BBCF) ${name}`));
         });
 
         this.characterObservables[1].subscribe((names: string[]) => {
           this._getMatchedNames(names, option).
-            forEach((name: string) => this.matchedOptions.push(`(BBTAG) ${name}`));
+            forEach((name: string) => this._matchedOptions.push(`(BBTAG) ${name}`));
         });
   })}
 
@@ -45,6 +45,10 @@ export class CharacterSelectionComponent implements OnInit {
       (name: string) => name.toLowerCase().includes(option.toLowerCase())
       );
     return matchedOptions.map(this._parseCharacterName);
+  }
+
+  getMatchedOptions(): string[] {
+    return [...new Set(this._matchedOptions)];
   }
 
   getGamePrefix(selectedOption: string): string {
