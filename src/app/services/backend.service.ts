@@ -7,7 +7,7 @@ import { Observable, map} from 'rxjs';
   providedIn: 'root'
 })
 export class BackendService {
-  endpoint: string = 'http://127.0.0.1:5000/';
+  endpoint: string = 'http://localhost:5000/';
   constructor(private http: HttpClient) { }
 
   getAllCharacterNames(): Observable<string[]>[] {
