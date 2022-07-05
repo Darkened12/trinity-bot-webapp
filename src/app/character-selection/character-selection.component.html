@@ -5,15 +5,15 @@
   <form [formGroup]="formGroup">
     <input type="text"
             class="form-control"
-           placeholder="{{optionSelected | async}}" 
+           placeholder="Start to type..." 
            matInput
            formControlName="characterName"
            [matAutocomplete]="auto">
     <mat-autocomplete #auto="matAutocomplete">                  
-      <mat-option *ngFor="let character of matchedCharacters | async" [value]="character">
+      <mat-option *ngFor="let character of matchedCharacters | async" [value]="character.name">
         <div class="d-flex flex-row p-2 align-items-center">
           <img src="{{character.iconUrl}}" loading="lazy" class="{{ character.gamePrefix }}">
-          <p class="p-1">{{ character.name }} </p>
+          <p class="p-1">{{ character.name.split('_').join(' ') }} </p>
         </div>
         
       </mat-option>

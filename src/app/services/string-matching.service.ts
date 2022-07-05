@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import levenshtein from 'js-levenshtein';
+import { compareTwoStrings } from 'string-similarity';
 import { IStringMatching } from './string-matching.models';
 
 @Injectable({
@@ -11,7 +11,7 @@ export class StringMatchingService {
   }
 
   between(stringA: string, stringB: string): number {
-    return levenshtein(stringA, stringB);
+    return compareTwoStrings(stringA, stringB) * 100;
   }
 
   match(string_: string, array: Array<string>): Array<string> {

@@ -16,7 +16,7 @@ export class CharacterSelectionComponent implements OnInit {
   characterNames: Observable<Array<ICharacterNames>>;
   optionSelected: Subject<string> = new Subject();
 
-  matchedCharacters: Observable<Array<IMatchedPartialCharacter>>;
+  matchedCharacters: Observable<Array<IPartialCharacter>>;
   formGroup: FormGroup = this._fb.group({
     'characterName' : ['']
   })
@@ -31,9 +31,10 @@ export class CharacterSelectionComponent implements OnInit {
       this.optionSelected.subscribe((option: string) => {
         this.characterNames.subscribe((data: Array<ICharacterNames>) => {
           let characters: Array<IPartialCharacter> = this._getPartialCharacters(data);
-          const sortedCharacters = this._sortByLevenshteinDistance(option, characters);
-          console.log(sortedCharacters);
-          subscriber.next(sortedCharacters.slice(0, 6));
+          const parsedCharacters = characters.filter((character: IPartialCharacter) => {
+            return character.name.toLowerCase().includes(option.toLowerCase());
+        });
+          subscriber.next(parsedCharacters);
         })
       })
     });
