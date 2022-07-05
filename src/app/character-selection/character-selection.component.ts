@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { Observable, Subject, BehaviorSubject } from 'rxjs';
+import { interval, Observable, Subject } from 'rxjs';
+import { switchMap } from 'rxjs';
 import { BackendService } from '../services/backend.service';
 import { StringMatchingService } from '../services/string-matching.service';
 import { ICharacterNames } from '../services/backend.models';
@@ -28,6 +29,7 @@ export class CharacterSelectionComponent implements OnInit {
   ) {
     this.characterNames = this._backend.getAllCharacterNames();
     this.matchedCharacters = new Observable(subscriber => {
+      this.optionSelected.pipe(switchMap(() => interval(10000)));
       this.optionSelected.subscribe((option: string) => {
         this.characterNames.subscribe((data: Array<ICharacterNames>) => {
           let characters: Array<IPartialCharacter> = this._getPartialCharacters(data);
