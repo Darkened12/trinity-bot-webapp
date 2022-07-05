@@ -10,10 +10,10 @@
            formControlName="characterName"
            [matAutocomplete]="auto">
     <mat-autocomplete #auto="matAutocomplete">                  
-      <mat-option *ngFor="let name of getMatchedOptions()" [value]="name">
+      <mat-option *ngFor="let character of matchedCharacters | async" [value]="character">
         <div class="d-flex flex-row p-2 align-items-center">
-          <img src="{{getIconUrl(name)}}" loading="lazy" class="{{ getGamePrefix(name) }}">
-          <p class="p-1">{{ removeGamePrefix(name) }} </p>
+          <img src="{{character.iconUrl}}" loading="lazy" class="{{ character.gamePrefix }}">
+          <p class="p-1">{{ character.name }} </p>
         </div>
         
       </mat-option>
