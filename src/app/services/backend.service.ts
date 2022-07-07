@@ -7,7 +7,7 @@ import { ICharacterNames } from './backend.models';
   providedIn: 'root'
 })
 export class BackendService {
-  endpoint: string = 'http://localhost:5000/';
+  endpoint: string = 'http://192.168.0.10:5000/';
   constructor(private http: HttpClient) { }
 
   getAllCharacterNames(): Observable<Array<ICharacterNames>> {
