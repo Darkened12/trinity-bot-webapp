@@ -6,6 +6,7 @@ import { BackendService } from '../services/backend.service';
 import { StringMatchingService } from '../services/string-matching.service';
 import { ICharacterNames } from '../services/backend.models';
 import { IMatchedPartialCharacter, IPartialCharacter } from './character-selection.models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-character-selection',
@@ -25,16 +26,21 @@ export class CharacterSelectionComponent implements OnInit {
   constructor(
     private _backend: BackendService, 
     private _stringMatching: StringMatchingService,
-    private _fb: FormBuilder
+    private _fb: FormBuilder,
+    private _router: Router
   ) {
     this.characterNames = this._backend.getAllCharacterNames();
     this.matchedCharacters = new Observable(subscriber => {
       this.optionSelected.pipe(switchMap(() => interval(10000)));
-      this.optionSelected.subscribe((option: string) => {
+      this.optionSelected.subscribe((option: string | IPartialCharacter) => {
         this.characterNames.subscribe((data: Array<ICharacterNames>) => {
           let characters: Array<IPartialCharacter> = this._getPartialCharacters(data);
           const parsedCharacters = characters.filter((character: IPartialCharacter) => {
-            return character.name.toLowerCase().includes(option.toLowerCase());
+            if (typeof option === 'string') {
+              return character.name.toLowerCase().includes(option.toLowerCase());
+            }
+            return character.name.toLowerCase().includes(option.name.toLowerCase());
+            
         });
           subscriber.next(parsedCharacters);
         })
@@ -89,6 +95,17 @@ export class CharacterSelectionComponent implements OnInit {
       return `${this._backend.endpoint}tag/${parsedOption}/icon.png`
     }
     throw new Error('Not Implemented');
+  }
+
+  onSelect(character: IPartialCharacter) {
+    this._router.navigate([`${character.gamePrefix}/${character.name}/5A`]);
+  }
+
+  displayName(value: IPartialCharacter): string {
+    if (value) {
+      return value.name.split('_').join(' ');
+    }
+    return '';
   }
 
   initForm() {
