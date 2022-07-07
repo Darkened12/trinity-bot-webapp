@@ -73,32 +73,6 @@ export class CharacterSelectionComponent implements OnInit {
     );
   }
 
-  private _getMatchedCharacters(characters: Array<IPartialCharacter>): Array<IPartialCharacter> {
-    return characters;
-  }
-
-  private _parseCharacterName(characterName: string): string {
-    return characterName.replace('_', ' ');
-  }
-
-  private _getMatchedNames(characterNames: string[], option: string): string[] {
-    const parsedCharacterNames: string[] = characterNames.map(this._parseCharacterName);
-    const matchedOptions: string[] = this._stringMatching.match(
-      option, parsedCharacterNames.map(this.removeGamePrefix));
-    return matchedOptions;
-  }
-
-
-  getGamePrefix(selectedOption: string): string {
-    if (selectedOption.includes('BBCF')) {
-      return 'BBCF';
-    } 
-    else if (selectedOption.includes('BBTAG')) {
-      return 'BBTAG';
-    }
-    throw new Error('Not Implemented')
-  }
-
   removeGamePrefix(selectedOption: string): string {
     return selectedOption.replace('(BBCF) ', '').replace('(BBTAG) ', '');
   }
