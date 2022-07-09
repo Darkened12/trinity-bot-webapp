@@ -12,13 +12,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CharacterComponent } from './character/character.component';
+import { CharacterInfoComponent } from './character-info/character-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TrinityHeaderComponent,
     CharacterSelectionComponent,
-    CharacterComponent
+    CharacterComponent,
+    CharacterInfoComponent
   ],
   imports: [
     BrowserModule,

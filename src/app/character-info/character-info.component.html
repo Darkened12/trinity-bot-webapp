@@ -1,1 +1,13 @@
-<p>character-info works!</p>
+<div class="shadow-lg d-flex flex-column align-items-center div-color">
+    <img class="img-fluid p-2" src="{{iconUrl | async}}">
+    <h2 class="p-2">{{ (character | async)?.name }}</h2>
+    <div class="p-1">
+        <ul class="list-group">
+            <li class="list-group-item bg-secondary"><p>Health: {{ (character | async)?.health }}</p></li>
+            <li class="list-group-item bg-secondary"><p>Jump Startup: {{ (character | async)?.jump_startup }}</p></li>
+            <li class="list-group-item bg-secondary"><p>Combo Rate: {{ (character | async)?.combo_rate }}</p></li>
+            <li class="list-group-item bg-secondary"><p>Dash: {{ (character | async)?.dash }}</p></li>
+        </ul>
+    </div>
+</div>
+
