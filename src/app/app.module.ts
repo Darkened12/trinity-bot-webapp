@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CharacterComponent } from './character/character.component';
 import { CharacterInfoComponent } from './character-info/character-info.component';
 import { MoveInfoComponent } from './move-info/move-info.component';
+import { MovelistComponent } from './movelist/movelist.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MoveInfoComponent } from './move-info/move-info.component';
     CharacterSelectionComponent,
     CharacterComponent,
     CharacterInfoComponent,
-    MoveInfoComponent
+    MoveInfoComponent,
+    MovelistComponent
   ],
   imports: [
     BrowserModule,
