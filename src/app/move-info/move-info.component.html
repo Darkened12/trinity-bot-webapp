@@ -1,0 +1,39 @@
+<div *ngFor="let move of moves | async" class="container-fluid m-4 div-color">
+    <div class="row">
+        <div class="col-7">
+            <div class="d-flex flex-column">
+                <h1 class="p-2 align-self-center">{{ move.move_name }}</h1>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6">
+                            <ul class="list-group">
+                                <li class="list-group-item bg-secondary"><p>Damage: {{ move.damage }}</p></li>
+                                <li class="list-group-item bg-secondary"><p>Startup: {{ move.startup }}</p></li>
+                                <li class="list-group-item bg-secondary"><p>Active: {{ move.active }}</p></li>
+                                <li class="list-group-item bg-secondary"><p>Recovery: {{ move.recovery }}</p></li>
+                                <li class="list-group-item bg-secondary"><p>Frame Adv: {{ move.frame_adv }}</p></li>
+                                <li class="list-group-item bg-secondary"><p>Guard: {{ move.guard }}</p></li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <ul class="list-group">
+                                <li class="list-group-item bg-secondary"><p>Attribute: {{ move.attribute }}</p></li>
+                                <li class="list-group-item bg-secondary"><p>Invul/GP: {{ move.invul }}</p></li>
+                                <li class="list-group-item bg-secondary"><p>Blockstun: {{ move.blockstun }}</p></li>
+                                <li class="list-group-item bg-secondary"><p>Blockstop: {{ move.blockstop }}</p></li>
+                                <li class="list-group-item bg-secondary"><p>Prorate: {{ move.prorate }}</p></li>
+                                <li class="list-group-item bg-secondary"><p>Cancel: {{ move.cancel}}</p></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="shadow d-flex flex-column m-2 border border-secondary">
+                <img src="{{getSpriteUrl(move.sprite)}}" loading="lazy">
+                <h3>{{move.notes}}</h3>
+            </div>
+        </div>
+    </div>
+</div>
