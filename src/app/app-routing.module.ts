@@ -6,7 +6,7 @@ import { CharacterComponent } from './character/character.component';
 
 const routes: Routes = [
   {path: '', component: CharacterSelectionComponent},
-  {path: ':gamePrefix/:characterName/:moveName', component: CharacterComponent}
+  {path: ':gamePrefix/:characterName', component: CharacterComponent}
 ];
 
 @NgModule({
