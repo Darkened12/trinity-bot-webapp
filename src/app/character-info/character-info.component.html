@@ -3,10 +3,29 @@
     <h2 class="p-2">{{ (character | async)?.name }}</h2>
     <div class="p-1">
         <ul class="list-group">
-            <li class="list-group-item bg-secondary"><p>Health: {{ (character | async)?.health }}</p></li>
-            <li class="list-group-item bg-secondary"><p>Jump Startup: {{ (character | async)?.jump_startup }}</p></li>
-            <li class="list-group-item bg-secondary"><p>Combo Rate: {{ (character | async)?.combo_rate }}</p></li>
-            <li class="list-group-item bg-secondary"><p>Dash: {{ (character | async)?.dash }}</p></li>
+            <li class="list-group-item bg-secondary m-1">
+                <div class="d-flex flex-column align-items-center" style="height: 50px;">
+                    <span class="badge rounded-pill bg-dark w-100">Health</span>
+                    <p>{{ (character | async)?.health }}</p>
+                </div>
+            <li class="list-group-item bg-secondary m-1">
+                <div class="d-flex flex-column align-items-center" style="height: 50px;">
+                    <span class="badge rounded-pill bg-dark w-100">Jump Startup</span>
+                    <p>{{ (character | async)?.jump_startup }}</p>
+                </div>
+            </li>
+            <li class="list-group-item bg-secondary m-1">
+                <div class="d-flex flex-column align-items-center" style="height: 50px;">
+                    <span class="badge rounded-pill bg-dark w-100">Combo Rate</span>
+                    <p>{{ (character | async)?.combo_rate }}</p>
+                </div>
+            </li>
+            <li class="list-group-item bg-secondary m-1">
+                <div class="d-flex flex-column align-items-center">
+                    <span class="badge rounded-pill bg-dark w-100">Dash</span>
+                    <p>{{ (character | async)?.dash }}</p>
+                </div>
+            </li>
         </ul>
     </div>
 </div>
