@@ -21,6 +21,7 @@ export class CharacterInfoComponent implements OnInit {
   ngOnInit(): void {
     this.character.subscribe((character: ICharacter) => {
       this.iconUrl.next(`${this._backend.endpoint}${this.urlParser.gamePrefix}/${character.icon}`);
+      console.log(`#${character.color}`);
       this.characterColor.next(`#${character.color}`);
     })
   }

@@ -21,7 +21,6 @@ export class MoveInfoComponent implements OnInit {
     'attribute',
     'invul',
     'blockstun',
-    'blockstop',
     'P1',
     'P2',
     'cancel'

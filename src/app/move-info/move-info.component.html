@@ -2,45 +2,46 @@
     <div class="row">
         <div class="col-7">
             <div class="d-flex flex-column">
-                <h1 class="p-2 align-self-center">{{ move.move_name }}</h1>
-                <div class="container">
+                <div class="shadow container-fluid border border-secondary m-2 bg-dark">
+                    <h1 class="p-2 text-center">{{ move.move_name }}</h1>
+                </div>
+                
+                <div class="shadow container border border-secondary m-2 mb-4">
                     <div class="row">
-                        <div class="col-6">
-                            <div *ngFor="let property of moveProperties.slice(0, 7)" class="d-flex flex-column border border-secondary p-2 m-1">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <span class="badge rounded-pill bg-dark">{{ parseProperty(property) }}</span>
-                                        </div>
-                                        <div class="col-6">
-                                            <p>{{ getMoveValueByProperty(move, property) }}</p>
-                                        </div>
+                        <div *ngFor="let slicedMoves of [moveProperties.slice(0, 6), moveProperties.slice(6)]" class="col-6">
+                            <ul class="list-group list-group-flush m-3">
+                                <li *ngFor="let property of slicedMoves" class="shadow m-1 list-group-item li-color">
+                                    <div class="d-flex flex-column align-items-center" style="height: 50px;">
+                                        <span class="badge rounded-pill bg-dark w-100">{{ parseProperty(property) }}</span>
+                                        <p>{{ getMoveValueByProperty(move, property) }}</p>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div *ngFor="let property of moveProperties.slice(7)" class="d-flex flex-column border border-secondary p-2 m-1">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <span class="badge rounded-pill bg-dark">{{ parseProperty(property) }}</span>
-                                        </div>
-                                        <div class="col-6">
-                                            <p>{{ getMoveValueByProperty(move, property) }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-5">
-            <div class="shadow d-flex flex-column m-2 border border-secondary">
-                <img src="{{getSpriteUrl(move.sprite)}}" loading="lazy">
-                <p>{{move.notes}}</p>
+            <div class="d-flex flex-column m-2">
+                <div class="shadow img-container mt-4 border border-secondary">
+                    <img src="{{getSpriteUrl(move.sprite)}}" class="p-4" loading="lazy">
+                </div>
+                <div *ngIf="move.notes !== '-'">
+                    <div style="max-height: 200px;" class="shadow container-fluid li-color overflow-auto">
+                        <div class="row">
+                            <div class="col-2 p-3">
+                                <span class="badge rounded-pill bg-dark">Notes: </span>
+                            </div>
+                            <div class="col-10">
+                                <p class="p-2 m-2">{{move.notes}}</p>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>

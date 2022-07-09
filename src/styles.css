@@ -4,10 +4,14 @@ body {
     background-color: rgb(43, 42, 42);
 }
 
-h2, p {
+h1, h2, p {
     color: white;
 }
 
 .div-color {
     background-color:rgb(92, 92, 92);
+}
+
+.li-color {
+    background-color: rgb(70, 70, 70);
 }
