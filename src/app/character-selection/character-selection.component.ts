@@ -98,7 +98,7 @@ export class CharacterSelectionComponent implements OnInit {
   }
 
   onSelect(character: IPartialCharacter) {
-    this._router.navigate([`${character.gamePrefix}/${character.name}/5A`]);
+    this._router.navigate([`${character.gamePrefix}/${character.name}`]);
   }
 
   displayName(value: IPartialCharacter): string {
