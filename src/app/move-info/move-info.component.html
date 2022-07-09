@@ -6,24 +6,32 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-6">
-                            <ul class="list-group">
-                                <li class="list-group-item bg-secondary"><p>Damage: {{ move.damage }}</p></li>
-                                <li class="list-group-item bg-secondary"><p>Startup: {{ move.startup }}</p></li>
-                                <li class="list-group-item bg-secondary"><p>Active: {{ move.active }}</p></li>
-                                <li class="list-group-item bg-secondary"><p>Recovery: {{ move.recovery }}</p></li>
-                                <li class="list-group-item bg-secondary"><p>Frame Adv: {{ move.frame_adv }}</p></li>
-                                <li class="list-group-item bg-secondary"><p>Guard: {{ move.guard }}</p></li>
-                            </ul>
+                            <div *ngFor="let property of moveProperties.slice(0, 7)" class="d-flex flex-column border border-secondary p-2 m-1">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <span class="badge rounded-pill bg-dark">{{ parseProperty(property) }}</span>
+                                        </div>
+                                        <div class="col-6">
+                                            <p>{{ getMoveValueByProperty(move, property) }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-6">
-                            <ul class="list-group">
-                                <li class="list-group-item bg-secondary"><p>Attribute: {{ move.attribute }}</p></li>
-                                <li class="list-group-item bg-secondary"><p>Invul/GP: {{ move.invul }}</p></li>
-                                <li class="list-group-item bg-secondary"><p>Blockstun: {{ move.blockstun }}</p></li>
-                                <li class="list-group-item bg-secondary"><p>Blockstop: {{ move.blockstop }}</p></li>
-                                <li class="list-group-item bg-secondary"><p>Prorate: {{ move.prorate }}</p></li>
-                                <li class="list-group-item bg-secondary"><p>Cancel: {{ move.cancel}}</p></li>
-                            </ul>
+                            <div *ngFor="let property of moveProperties.slice(7)" class="d-flex flex-column border border-secondary p-2 m-1">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <span class="badge rounded-pill bg-dark">{{ parseProperty(property) }}</span>
+                                        </div>
+                                        <div class="col-6">
+                                            <p>{{ getMoveValueByProperty(move, property) }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -32,7 +40,7 @@
         <div class="col-5">
             <div class="shadow d-flex flex-column m-2 border border-secondary">
                 <img src="{{getSpriteUrl(move.sprite)}}" loading="lazy">
-                <h3>{{move.notes}}</h3>
+                <p>{{move.notes}}</p>
             </div>
         </div>
     </div>
