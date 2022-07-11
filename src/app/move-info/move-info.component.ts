@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { IMove } from '../services/backend.models';
 import { BackendService } from '../services/backend.service';
@@ -25,9 +26,12 @@ export class MoveInfoComponent implements OnInit {
     'P2',
     'cancel'
   ];
+  @ViewChildren('movesDiv') movesDiv!: QueryList<any>;
+
   constructor(
     private _backend: BackendService,
-    private urlParser: UrlRouterParsingService
+    private urlParser: UrlRouterParsingService,
+    @Inject(DOCUMENT) private document: Document
   ) { }
 
   getSpriteUrl(url: string): string {
@@ -52,6 +56,13 @@ export class MoveInfoComponent implements OnInit {
     return move[objKey];
   }
 
+  private onAnchorDirectLink() {
+    this.movesDiv.changes.subscribe(t => {
+      this.document.getElementById(this.urlParser.moveAnchor)?.scrollIntoView();
+
+    });
+  }
+
   ngOnInit(): void {
     const characterObservable: Observable<Array<IMove>> = this._backend.getAllMovesFromCharacter(
       this.urlParser.gamePrefix, this.urlParser.characterName
@@ -59,4 +70,10 @@ export class MoveInfoComponent implements OnInit {
     characterObservable.subscribe((moves: Array<IMove>) => this.moves.next(moves));
   }
 
+  ngAfterViewInit() {
+    if (this.urlParser.moveAnchor !== '') {
+      this.onAnchorDirectLink();
+    }
+
+  }
 }
