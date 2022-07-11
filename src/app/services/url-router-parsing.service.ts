@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Route, Router, UrlSegment } from '@angular/router';
-import { Location } from '@angular/common';
-import { BehaviorSubject, filter, Subject } from 'rxjs';
+import { NavigationEnd, Router} from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +19,6 @@ export class UrlRouterParsingService {
       if (events instanceof NavigationEnd) {
         const url: string = events.url;
         const segments: string[] = url.split('/').slice(1);
-        console.log(segments);
         if (segments[0] !== undefined && segments[0] !== this.gamePrefix.getValue()) {
           this.gamePrefix.next(segments[0]);
         }

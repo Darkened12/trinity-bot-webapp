@@ -1,8 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit, QueryList, ViewChildren } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { filter, Observable, Subject } from 'rxjs';
-import { ICharacter, IMove } from '../services/backend.models';
+import { filter, Subject } from 'rxjs';
+import { IMove } from '../services/backend.models';
 import { BackendService } from '../services/backend.service';
 import { UrlRouterParsingService } from '../services/url-router-parsing.service';
 
@@ -33,8 +32,6 @@ export class MoveInfoComponent implements OnInit {
   constructor(
     private _backend: BackendService,
     private urlParser: UrlRouterParsingService,
-    private _activatedRoute: ActivatedRoute,
-    private _router: Router,
     @Inject(DOCUMENT) private document: Document
   ) {     this._initData(); }
 
@@ -70,12 +67,10 @@ export class MoveInfoComponent implements OnInit {
   private _initData() {
     this.urlParser.gamePrefix.pipe(filter(this.urlParser.parseEmptyValue)).subscribe((gamePrefix: string) => {
       this.urlParser.characterName.pipe(filter(this.urlParser.parseEmptyValue)).subscribe((characterName: string) => {
-        if (this.urlParser.hasEmmited()) {
           const moves = this._backend.getAllMovesFromCharacter(
             gamePrefix, characterName
           );
           moves.subscribe((moves: IMove[]) => this.moves.next(moves));
-        }
       })
     })
     
