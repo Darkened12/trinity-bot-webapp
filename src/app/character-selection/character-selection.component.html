@@ -13,7 +13,7 @@
                formControlName="characterName"
                [matAutocomplete]="auto">
         <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayName" (optionSelected)="onSelect($event.option.value)">                  
-          <mat-option *ngFor="let character of matchedCharacters | async" [value]="character">
+          <mat-option id="option" class="div-color" *ngFor="let character of matchedCharacters | async" [value]="character">
             <div class="d-flex flex-row p-2 align-items-center">
               <img src="{{character.iconUrl}}" loading="lazy" class="{{ character.gamePrefix }}">
               <p class="p-1">{{ character.name.split('_').join(' ') }} </p>

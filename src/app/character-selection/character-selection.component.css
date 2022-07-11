@@ -5,3 +5,7 @@
 .tag {
     height: 65px;
 }
+
+#option:hover {
+    background-color: darkgreen;
+}
