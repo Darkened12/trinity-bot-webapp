@@ -11,7 +11,7 @@ import { UrlRouterParsingService } from '../services/url-router-parsing.service'
   styleUrls: ['./movelist.component.css']
 })
 export class MovelistComponent implements OnInit {
-  moveNames: Observable<string[]>;
+  moveNames!: Observable<string[]>;
   fragment!: string;
 
   constructor(
@@ -19,9 +19,14 @@ export class MovelistComponent implements OnInit {
     private _backend: BackendService,
     private route: ActivatedRoute
   ) { 
-    this.moveNames = this._backend.getAllMoveNamesFromCharacter(
-      this.urlParser.gamePrefix, this.urlParser.characterName
-    );
+    this.urlParser.gamePrefix.subscribe((gamePrefix: string) => {
+      this.urlParser.characterName.subscribe((characterName: string) => {
+        this.moveNames = this._backend.getAllMoveNamesFromCharacter(
+          gamePrefix, characterName
+        );
+      })
+    })
+    
   }
   ngOnInit(): void {
 

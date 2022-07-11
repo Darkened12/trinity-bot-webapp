@@ -1,7 +1,8 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
-import { IMove } from '../services/backend.models';
+import { ICharacter, IMove } from '../services/backend.models';
 import { BackendService } from '../services/backend.service';
 import { UrlRouterParsingService } from '../services/url-router-parsing.service';
 
@@ -12,6 +13,7 @@ import { UrlRouterParsingService } from '../services/url-router-parsing.service'
 })
 export class MoveInfoComponent implements OnInit {
   moves: Subject<Array<IMove>> = new Subject();
+
   moveProperties: string[] = [
     'damage',
     'startup',
@@ -31,11 +33,14 @@ export class MoveInfoComponent implements OnInit {
   constructor(
     private _backend: BackendService,
     private urlParser: UrlRouterParsingService,
+    private _activatedRoute: ActivatedRoute,
+    private _router: Router,
     @Inject(DOCUMENT) private document: Document
-  ) { }
+  ) {     this._initData(); }
 
   getSpriteUrl(url: string): string {
-    return `${this._backend.endpoint}${this.urlParser.gamePrefix}/${url}`;
+    return `${this._backend.endpoint}/${url}`;
+    
   }
 
   private toTitle(str: string): string {
@@ -56,24 +61,33 @@ export class MoveInfoComponent implements OnInit {
     return move[objKey];
   }
 
-  private onAnchorDirectLink() {
+  private onAnchorDirectLink(moveAnchor: string) {
     this.movesDiv.changes.subscribe(t => {
-      this.document.getElementById(this.urlParser.moveAnchor)?.scrollIntoView();
-
+      this.document.getElementById(moveAnchor)?.scrollIntoView();
     });
   }
 
+  private _initData() {
+    this.urlParser.gamePrefix.subscribe((gamePrefix: string) => {
+      this.urlParser.characterName.subscribe((characterName: string) => {
+        console.log(gamePrefix)
+        console.log(characterName)
+        const moves = this._backend.getAllMovesFromCharacter(
+          gamePrefix, characterName
+        );
+        moves.subscribe((moves: IMove[]) => this.moves.next(moves));
+      })
+    })
+    
+  }
+
   ngOnInit(): void {
-    const characterObservable: Observable<Array<IMove>> = this._backend.getAllMovesFromCharacter(
-      this.urlParser.gamePrefix, this.urlParser.characterName
-    );
-    characterObservable.subscribe((moves: Array<IMove>) => this.moves.next(moves));
   }
 
   ngAfterViewInit() {
-    if (this.urlParser.moveAnchor !== '') {
-      this.onAnchorDirectLink();
-    }
+    this.urlParser.moveAnchor.subscribe((moveAnchor: string) => {
+      this.onAnchorDirectLink(moveAnchor);
+    })
 
   }
 }

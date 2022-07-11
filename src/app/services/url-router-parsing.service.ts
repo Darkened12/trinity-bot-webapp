@@ -1,26 +1,39 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Route, Router, UrlSegment } from '@angular/router';
+import { Location } from '@angular/common';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UrlRouterParsingService {
-  characterName: string = '';
-  gamePrefix: string = '';
-  moveAnchor: string = '';
+  characterName: BehaviorSubject<string> = new BehaviorSubject('');
+  gamePrefix: BehaviorSubject<string> = new BehaviorSubject('');
+  moveAnchor: BehaviorSubject<string> = new BehaviorSubject('');
 
-  constructor(private router: Router) { 
-    this._parseActiveUrl();
-  }
+  constructor(private _router: Router) { 
+    this._router.events.subscribe((events) => {
+      if (events instanceof NavigationEnd) {
+        const url: string = events.url;
+        const segments: string[] = url.split('/').slice(1);
+        console.log(segments);
+        if (segments[0] !== undefined && segments[0] !== this.gamePrefix.getValue()) {
+          this.gamePrefix.next(segments[0]);
+        }
+        if (segments[1] !== undefined) {
+          const characterPath: string = segments[1]
+          if (characterPath.includes('#')) {
+            const tempSegments: string[] = characterPath.split('#');
+            if (this.characterName.getValue() !== tempSegments[0]) { 
+              this.characterName.next(tempSegments[0]);
+              this.moveAnchor.next(tempSegments[1]) 
+            }
+            
+          }
+          else { this.characterName.next(characterPath); }
+        }
+      }
 
-  private _parseActiveUrl(): void {
-    const splitUrl: string[] = this.router.url.split('/').slice(1);
-    this.gamePrefix = splitUrl[0];
-    this.characterName = splitUrl[1];
-    if (this.characterName.includes('#')) {
-      const tempSegments: string[] = this.characterName.split('#');
-      this.characterName = tempSegments[0];
-      this.moveAnchor = tempSegments[1];
-    }
+    })
   }
 }
