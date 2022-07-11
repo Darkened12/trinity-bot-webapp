@@ -1,5 +1,5 @@
 <div class="container">
-    <div id="movelist-navbar" class="d-flex flex-column div-color p-3 m-4 position-fixed overflow-auto">
+    <div id="movelist-navbar" class="d-flex flex-column div-color p-3 m-4 overflow-auto">
         <div class="text-center" *ngFor="let moveName of moveNames | async">
             <a style="color: white;" [fragment]="moveName" [routerLink]="['./']">{{ moveName }}</a>
         </div>
