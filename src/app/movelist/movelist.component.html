@@ -1,7 +1,7 @@
 <div class="container">
-    <nav id="movelist-navbar" class="navbar div-color flex-column align-items-stretch p-3">
-        <div *ngFor="let moveName of moveNames | async">
+    <div id="movelist-navbar" class="d-flex flex-column div-color p-3 m-4 position-fixed overflow-auto">
+        <div class="text-center" *ngFor="let moveName of moveNames | async">
             <a style="color: white;" [fragment]="moveName" [routerLink]="['./']">{{ moveName }}</a>
         </div>
-    </nav>
+    </div>
 </div>
