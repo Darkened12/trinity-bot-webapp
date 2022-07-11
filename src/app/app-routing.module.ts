@@ -6,11 +6,13 @@ import { CharacterComponent } from './character/character.component';
 
 const routes: Routes = [
   {path: '', component: CharacterSelectionComponent},
-  {path: ':gamePrefix/:characterName', component: CharacterComponent}
+  {path: ':gamePrefix/:characterName', component: CharacterComponent},
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    anchorScrolling: 'enabled'
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

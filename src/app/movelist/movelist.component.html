@@ -1,1 +1,7 @@
-<p>movelist works!</p>
+<div class="container">
+    <nav id="movelist-navbar" class="navbar div-color flex-column align-items-stretch p-3">
+        <div *ngFor="let moveName of moveNames | async">
+            <a style="color: white;" [fragment]="moveName" [routerLink]="['./']">{{ moveName }}</a>
+        </div>
+    </nav>
+</div>
