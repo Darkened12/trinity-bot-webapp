@@ -22,7 +22,7 @@ export class MoveInfoFrameDataComponent implements OnInit {
     'cancel'
   ];
 
-  @Input() move: IMove | undefined;
+  @Input() move!: IMove;
   constructor() { }
 
   private toTitle(str: string): string {
