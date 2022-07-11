@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./character-selection-view.component.css']
 })
 export class CharacterSelectionViewComponent implements OnInit {
-
+  textInputClass = 'form-control-lg';
   constructor() { }
 
   ngOnInit(): void {

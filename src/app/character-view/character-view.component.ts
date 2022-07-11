@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-character',
@@ -6,6 +6,8 @@ import { Component, Inject, OnInit } from '@angular/core';
   styleUrls: ['./character-view.component.css']
 })
 export class CharacterViewComponent implements OnInit {
+  textInputClass = 'form-control-sm';
+  imgClass = '-small';
   constructor() { }
   ngOnInit(): void { }
 }

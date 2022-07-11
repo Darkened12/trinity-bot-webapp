@@ -15,3 +15,19 @@ h1, h2, p {
 .li-color {
     background-color: rgb(70, 70, 70);
 }
+
+.cf {
+    height: 45px;
+}
+
+.tag {
+    height: 65px;
+}
+
+.cf-small {
+    height: 25px;
+}
+
+.tag-small {
+    height: 35px;
+}

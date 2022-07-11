@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { interval, Observable, Subject } from 'rxjs';
 import { switchMap } from 'rxjs';
@@ -15,6 +15,8 @@ import { Router } from '@angular/router';
 })
 export class CharacterSelectionComponent implements OnInit {
 
+  @Input() textInputClass: string = 'form-control-lg';
+  @Input() imgClass: string = '';
   characterNames: Observable<Array<ICharacterNames>>;
   optionSelected: Subject<string> = new Subject();
 
