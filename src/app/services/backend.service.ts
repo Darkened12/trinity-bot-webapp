@@ -28,6 +28,12 @@ export class BackendService {
     return this.http.get<ICharacter>(`${this.endpoint}${gamePrefix}/${characterName}`);
   }
 
+  getAllMoveNamesFromCharacter(gamePrefix: string, characterName: string): Observable<Array<string>> {
+    return this.http.get<string[]>(
+      `${this.endpoint}${gamePrefix}/get_move_list?character_name=${characterName}`
+    )
+  }
+
   getAllMovesFromCharacter(gamePrefix: string, characterName: string): Observable<Array<IMove>> {
     return this.http.get<Array<IMove>>(`${this.endpoint}${gamePrefix}/${characterName}/get_all_moves`);
   }
