@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, Subject, Subscriber, Subscription } from 'rxjs';
+import { filter, Observable, Subject, Subscriber, Subscription } from 'rxjs';
 import { ICharacter } from '../services/backend.models';
 import { BackendService } from '../services/backend.service';
 import { UrlRouterParsingService } from '../services/url-router-parsing.service';
@@ -19,10 +19,10 @@ export class CharacterInfoComponent implements OnInit {
     private urlParser: UrlRouterParsingService,
     private activedRoute: ActivatedRoute
   ) {
-    this.urlParser.gamePrefix.subscribe((gamePrefix: string) => {
-      this.urlParser.characterName.subscribe((characterName: string) => {
-        const characterObservable = this._backend.getCharacter(gamePrefix, characterName);
-        characterObservable.subscribe((character: ICharacter) => this.character.next(character))
+    this.urlParser.gamePrefix.pipe(filter(this.urlParser.parseEmptyValue)).subscribe((gamePrefix: string) => {
+      this.urlParser.characterName.pipe(filter(this.urlParser.parseEmptyValue)).subscribe((characterName: string) => {
+          const characterObservable = this._backend.getCharacter(gamePrefix, characterName);
+          characterObservable.subscribe((character: ICharacter) => this.character.next(character));
       })
     })
   }

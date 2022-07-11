@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Route, Router, UrlSegment } from '@angular/router';
 import { Location } from '@angular/common';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, filter, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +10,10 @@ export class UrlRouterParsingService {
   characterName: BehaviorSubject<string> = new BehaviorSubject('');
   gamePrefix: BehaviorSubject<string> = new BehaviorSubject('');
   moveAnchor: BehaviorSubject<string> = new BehaviorSubject('');
+
+  parseEmptyValue(value: string): boolean {
+    return value !== '';
+  }
 
   constructor(private _router: Router) { 
     this._router.events.subscribe((events) => {
@@ -35,5 +39,9 @@ export class UrlRouterParsingService {
       }
 
     })
+  }
+
+  hasEmmited(): boolean {
+    return this.gamePrefix.getValue() !== '' || this.characterName.getValue() !== '' || this.moveAnchor.getValue() !== '';
   }
 }
