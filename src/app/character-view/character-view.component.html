@@ -2,10 +2,17 @@
     <div class="row">
         <div class="col-2">
             <div class="d-flex flex-column position-fixed">
-                <app-character-selection [textInputClass]="textInputClass" [imgClass]="imgClass"></app-character-selection>
-                <app-movelist></app-movelist>
+                <div class="trinity-header">
+                    <app-trinity-header [isSmall]="true"></app-trinity-header>
+                </div>
+                <div>
+                    <app-character-selection [textInputClass]="textInputClass" [imgClass]="imgClass"></app-character-selection>
+                </div>              
+                <div class="movelist">    
+                    <app-movelist></app-movelist>
+                </div>
             </div>
-        </div>
+        </div>  
         <div class="col-8">
             <app-move-info></app-move-info>
         </div>

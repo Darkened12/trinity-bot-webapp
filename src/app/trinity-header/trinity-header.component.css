@@ -1,3 +1,7 @@
-h1 {
+h1, h5 {
     color: white;
+}
+
+h5 {
+    padding-left: 15px;
 }
