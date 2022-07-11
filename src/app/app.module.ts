@@ -15,6 +15,7 @@ import { CharacterViewComponent } from './character-view/character-view.componen
 import { CharacterInfoComponent } from './character-info/character-info.component';
 import { MoveInfoComponent } from './move-info/move-info.component';
 import { MovelistComponent } from './movelist/movelist.component';
+import { CharacterSelectionViewComponent } from './character-selection-view/character-selection-view.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MovelistComponent } from './movelist/movelist.component';
     CharacterViewComponent,
     CharacterInfoComponent,
     MoveInfoComponent,
-    MovelistComponent
+    MovelistComponent,
+    CharacterSelectionViewComponent
   ],
   imports: [
     BrowserModule,

@@ -1,28 +1,22 @@
-<div class="d-flex flex-column align-items-center justify-content-center">
-  <app-trinity-header></app-trinity-header>
-  <div>
-    <div class="input-group mb-3 p-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">🔎</span>
-      </div>
-      <form [formGroup]="formGroup">
-        <input type="text"
-                class="form-control"
-               placeholder="Start to type..." 
-               matInput
-               formControlName="characterName"
-               [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayName" (optionSelected)="onSelect($event.option.value)">                  
-          <mat-option id="option" class="div-color" *ngFor="let character of matchedCharacters | async" [value]="character">
-            <div class="d-flex flex-row p-2 align-items-center">
-              <img src="{{character.iconUrl}}" loading="lazy" class="{{ character.gamePrefix }}">
-              <p class="p-1">{{ character.name.split('_').join(' ') }} </p>
-            </div>
-            
-          </mat-option>
-        </mat-autocomplete>
-      </form>
-    </div>
+<div class="input-group mb-3 p-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">🔎</span>
   </div>
-  
+  <form [formGroup]="formGroup">
+    <input type="text"
+            class="form-control"
+            placeholder="Start to type..." 
+            matInput
+            formControlName="characterName"
+            [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayName" (optionSelected)="onSelect($event.option.value)">                  
+      <mat-option id="option" class="div-color" *ngFor="let character of matchedCharacters | async" [value]="character">
+        <div class="d-flex flex-row p-2 align-items-center">
+          <img src="{{character.iconUrl}}" loading="lazy" class="{{ character.gamePrefix }}">
+          <p class="p-1">{{ character.name.split('_').join(' ') }} </p>
+        </div>
+      </mat-option>
+    </mat-autocomplete>
+  </form>
 </div>
+
