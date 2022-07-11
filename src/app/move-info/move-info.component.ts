@@ -25,7 +25,10 @@ export class MoveInfoComponent implements OnInit {
     'P2',
     'cancel'
   ];
-  constructor(private _backend: BackendService, private urlParser: UrlRouterParsingService) { }
+  constructor(
+    private _backend: BackendService,
+    private urlParser: UrlRouterParsingService
+  ) { }
 
   getSpriteUrl(url: string): string {
     return `${this._backend.endpoint}${this.urlParser.gamePrefix}/${url}`;
