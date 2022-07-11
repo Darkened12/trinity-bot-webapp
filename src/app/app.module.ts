@@ -11,7 +11,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CharacterComponent } from './character/character.component';
+import { CharacterViewComponent } from './character-view/character-view.component';
 import { CharacterInfoComponent } from './character-info/character-info.component';
 import { MoveInfoComponent } from './move-info/move-info.component';
 import { MovelistComponent } from './movelist/movelist.component';
@@ -21,7 +21,7 @@ import { MovelistComponent } from './movelist/movelist.component';
     AppComponent,
     TrinityHeaderComponent,
     CharacterSelectionComponent,
-    CharacterComponent,
+    CharacterViewComponent,
     CharacterInfoComponent,
     MoveInfoComponent,
     MovelistComponent

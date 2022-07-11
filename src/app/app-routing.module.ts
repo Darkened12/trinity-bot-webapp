@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
 import { CharacterSelectionComponent } from './character-selection/character-selection.component';
-import { CharacterComponent } from './character/character.component';
+import { CharacterViewComponent } from './character-view/character-view.component';
 
 const routes: Routes = [
   {path: '', component: CharacterSelectionComponent},
-  {path: ':gamePrefix/:characterName', component: CharacterComponent},
+  {path: ':gamePrefix/:characterName', component: CharacterViewComponent},
 ];
 
 @NgModule({
