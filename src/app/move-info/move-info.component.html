@@ -1,6 +1,6 @@
 <div #movesDiv *ngFor="let move of moves | async" class="container-fluid m-4 div-color">
     <div class="row">
-        <div class="col-7">
+        <div class="col-md-7 col-12">
             <div class="d-flex flex-column">
                 <div [attr.id]="move.move_name"  class="shadow container-fluid border border-secondary m-2 bg-dark">
                     <h1 class="p-2 text-center">{{ move.move_name }}</h1>
@@ -15,6 +15,7 @@
                                         <span class="badge rounded-pill bg-dark w-100">{{ parseProperty(property) }}</span>
                                         <p>{{ getMoveValueByProperty(move, property) }}</p>
                                     </div>
+                                    
                                 </li>
                             </ul>
                         </div>
@@ -22,13 +23,13 @@
                 </div>
             </div>
         </div>
-        <div class="col-5">
+        <div class="col-md-5">
             <div class="d-flex flex-column m-2">
                 <div class="shadow img-container mt-4 border border-secondary">
                     <img src="{{getSpriteUrl(move.sprite)}}" class="p-4" loading="lazy">
                 </div>
                 <div *ngIf="move.notes !== '-'">
-                    <div style="max-height: 200px;" class="shadow container-fluid li-color overflow-auto">
+                    <div class="shadow container-fluid li-color overflow-auto">
                         <div class="row">
                             <div class="col-2 p-3">
                                 <span class="badge rounded-pill bg-dark">Notes: </span>
@@ -37,10 +38,7 @@
                                 <p class="p-2 m-2">{{move.notes}}</p>
                             </div>
                         </div>
-                        
-                        
                     </div>
-
                 </div>
             </div>
         </div>
