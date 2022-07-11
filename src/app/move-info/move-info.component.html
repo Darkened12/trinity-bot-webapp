@@ -1,45 +1,12 @@
 <div #movesDiv *ngFor="let move of moves | async" class="container-fluid m-4 div-color">
     <div class="row">
         <div class="col-md-7 col-12">
-            <div class="d-flex flex-column">
-                <div [attr.id]="move.move_name"  class="shadow container-fluid border border-secondary m-2 bg-dark">
-                    <h1 class="p-2 text-center">{{ move.move_name }}</h1>
-                </div>
-                
-                <div class="shadow container border border-secondary m-2 mb-4">
-                    <div class="row">
-                        <div *ngFor="let slicedMoves of [moveProperties.slice(0, 6), moveProperties.slice(6)]" class="col-6">
-                            <ul class="list-group list-group-flush m-3">
-                                <li *ngFor="let property of slicedMoves" class="shadow m-1 list-group-item li-color">
-                                    <div class="d-flex flex-column align-items-center" style="height: 50px;">
-                                        <span class="badge rounded-pill bg-dark w-100">{{ parseProperty(property) }}</span>
-                                        <p>{{ getMoveValueByProperty(move, property) }}</p>
-                                    </div>
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <app-move-info-frame-data [move]="move"></app-move-info-frame-data>
         </div>
         <div class="col-md-5">
             <div class="d-flex flex-column m-2">
-                <div class="shadow img-container mt-4 border border-secondary">
-                    <img src="{{getSpriteUrl(move.sprite)}}" class="p-4" loading="lazy">
-                </div>
-                <div *ngIf="move.notes !== '-'">
-                    <div class="shadow container-fluid li-color overflow-auto">
-                        <div class="row">
-                            <div class="col-2 p-3">
-                                <span class="badge rounded-pill bg-dark">Notes: </span>
-                            </div>
-                            <div class="col-10">
-                                <p class="p-2 m-2">{{move.notes}}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <app-move-info-sprite [move]="move"></app-move-info-sprite>
+                <app-move-info-notes [move]="move"></app-move-info-notes>
             </div>
         </div>
     </div>

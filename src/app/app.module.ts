@@ -16,6 +16,9 @@ import { CharacterInfoComponent } from './character-info/character-info.componen
 import { MoveInfoComponent } from './move-info/move-info.component';
 import { MovelistComponent } from './movelist/movelist.component';
 import { CharacterSelectionViewComponent } from './character-selection-view/character-selection-view.component';
+import { MoveInfoFrameDataComponent } from './move-info-frame-data/move-info-frame-data.component';
+import { MoveInfoSpriteComponent } from './move-info-sprite/move-info-sprite.component';
+import { MoveInfoNotesComponent } from './move-info-notes/move-info-notes.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { CharacterSelectionViewComponent } from './character-selection-view/char
     CharacterInfoComponent,
     MoveInfoComponent,
     MovelistComponent,
-    CharacterSelectionViewComponent
+    CharacterSelectionViewComponent,
+    MoveInfoFrameDataComponent,
+    MoveInfoSpriteComponent,
+    MoveInfoNotesComponent
   ],
   imports: [
     BrowserModule,

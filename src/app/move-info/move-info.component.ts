@@ -13,20 +13,6 @@ import { UrlRouterParsingService } from '../services/url-router-parsing.service'
 export class MoveInfoComponent implements OnInit {
   moves: Subject<Array<IMove>> = new Subject();
 
-  moveProperties: string[] = [
-    'damage',
-    'startup',
-    'active',
-    'recovery',
-    'frame_adv',
-    'guard',
-    'attribute',
-    'invul',
-    'blockstun',
-    'P1',
-    'P2',
-    'cancel'
-  ];
   @ViewChildren('movesDiv') movesDiv!: QueryList<any>;
 
   constructor(
@@ -34,29 +20,6 @@ export class MoveInfoComponent implements OnInit {
     private urlParser: UrlRouterParsingService,
     @Inject(DOCUMENT) private document: Document
   ) {     this._initData(); }
-
-  getSpriteUrl(url: string): string {
-    return `${this._backend.endpoint}/${url}`;
-    
-  }
-
-  private toTitle(str: string): string {
-    let sentence = str.toLowerCase().split(" ");
-    for (let i = 0; i < sentence.length; i++) {
-      sentence[i] = sentence[i][0].toUpperCase() + sentence[i].slice(1);
-    }
-    
-    return sentence.join(" ");
-  }
-
-  parseProperty(property: string): string {
-    return this.toTitle(property.split('_').join(' '));
-  }
-
-  getMoveValueByProperty(move: IMove, property: string): string {
-    const objKey = property as keyof typeof move;
-    return move[objKey];
-  }
 
   private onAnchorDirectLink(moveAnchor: string) {
     this.movesDiv.changes.subscribe(t => {
