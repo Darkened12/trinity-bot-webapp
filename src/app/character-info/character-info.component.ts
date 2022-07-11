@@ -16,8 +16,8 @@ export class CharacterInfoComponent implements OnInit {
     private _backend: BackendService, 
     private urlParser: UrlRouterParsingService,
   ) {
-    this.urlParser.gamePrefix.pipe(filter(this.urlParser.parseEmptyValue)).subscribe((gamePrefix: string) => {
-      this.urlParser.characterName.pipe(filter(this.urlParser.parseEmptyValue)).subscribe((characterName: string) => {
+    this.urlParser.gamePrefix().subscribe((gamePrefix: string) => {
+      this.urlParser.characterName().subscribe((characterName: string) => {
         const characterObservable = this._backend.getCharacter(gamePrefix, characterName);
         characterObservable.subscribe((character: ICharacter) => this.character.next(character));
       })

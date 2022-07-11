@@ -16,8 +16,8 @@ export class MovelistComponent implements OnInit {
     public urlParser: UrlRouterParsingService, 
     private _backend: BackendService,
   ) { 
-    this.urlParser.gamePrefix.pipe(filter(this.urlParser.parseEmptyValue)).subscribe((gamePrefix: string) => {
-      this.urlParser.characterName.pipe(filter(this.urlParser.parseEmptyValue)).subscribe((characterName: string) => {
+    this.urlParser.gamePrefix().subscribe((gamePrefix: string) => {
+      this.urlParser.characterName().subscribe((characterName: string) => {
           this.moveNames = this._backend.getAllMoveNamesFromCharacter(
             gamePrefix, characterName
           );

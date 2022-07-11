@@ -65,8 +65,8 @@ export class MoveInfoComponent implements OnInit {
   }
 
   private _initData() {
-    this.urlParser.gamePrefix.pipe(filter(this.urlParser.parseEmptyValue)).subscribe((gamePrefix: string) => {
-      this.urlParser.characterName.pipe(filter(this.urlParser.parseEmptyValue)).subscribe((characterName: string) => {
+    this.urlParser.gamePrefix().subscribe((gamePrefix: string) => {
+      this.urlParser.characterName().subscribe((characterName: string) => {
           const moves = this._backend.getAllMovesFromCharacter(
             gamePrefix, characterName
           );
@@ -80,7 +80,7 @@ export class MoveInfoComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.urlParser.moveAnchor.pipe(filter(this.urlParser.parseEmptyValue)).subscribe((moveAnchor: string) => {
+    this.urlParser.moveAnchor().subscribe((moveAnchor: string) => {
       this.onAnchorDirectLink(moveAnchor);
     })
 
