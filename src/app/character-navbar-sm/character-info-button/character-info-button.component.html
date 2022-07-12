@@ -1,0 +1,23 @@
+<div>
+    <button 
+        class="btn btn-secondary" 
+        type="button" 
+        data-bs-toggle="offcanvas"
+        data-bs-target="#characterInfo"
+        aria-controls="characterInfo">Character Info
+    </button>
+
+    <div 
+        class="offcanvas offcanvas-end bg-dark" 
+        style="width: 50%;"
+        tabindex="-1" 
+        id="characterInfo"
+        aria-labelledby="offcanvasLabel">
+
+        <div class="offcanvas-header"></div>
+
+        <div class="offcanvas-body">
+            <app-character-info [character]="character"></app-character-info>
+        </div>
+    </div>
+</div>

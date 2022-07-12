@@ -16,7 +16,10 @@
         <div class="col-10 col-lg-8">
             <div class="d-flex flex-column">
                 <app-move-info [moves]="movesSubject.asObservable()"></app-move-info>
-                <app-character-navbar-sm [moveNames]="moveNamesSubject.asObservable()"></app-character-navbar-sm>
+                <app-character-navbar-sm
+                 [moveNames]="moveNamesSubject.asObservable()"
+                 [character]="characterSubject.asObservable()">
+                </app-character-navbar-sm>
             </div>
         </div>
         <div class="col-xl-2 col-lg-4">

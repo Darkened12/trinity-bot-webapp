@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ICharacter } from '../services/backend.models';
 
 @Component({
   selector: 'app-character-navbar-sm',
@@ -8,6 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class CharacterNavbarSmComponent implements OnInit {
   @Input() moveNames!: Observable<string[]>;
+  @Input() character!: Observable<ICharacter>;
   constructor() { }
 
   ngOnInit(): void {

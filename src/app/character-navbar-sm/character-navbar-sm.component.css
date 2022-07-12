@@ -15,10 +15,5 @@ nav {
     a {
         color: white;
     }
-
-    ul {
-        max-height: 500px;
-        max-width: 100px;
-    }
     
 }
