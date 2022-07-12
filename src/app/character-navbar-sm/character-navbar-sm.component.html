@@ -1,0 +1,25 @@
+<div class="fixed-bottom">
+    <nav class="navbar navbar-expand-sm bg-dark">
+        <div class="container">
+            <a class="navbar-brand" [routerLink]="['/']">
+                <img class="border rounded-circle" src="https://cdn.discordapp.com/app-icons/576357396809777153/d50202ebcec4a59c7cd2d45f999a7e39.png">
+            </a>
+
+            
+            <div class="btn-group dropup">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  Movelist
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark overflow-auto">
+                    <li *ngFor="let name of moveNames | async">
+                        <a class="dropdown-item" [routerLink]="['./']" [fragment]="name">{{ name }}</a>
+                    </li>
+                </ul>
+            </div>
+
+            <button class="btn btn-secondary">Character Info</button>
+              
+      
+        </div>
+    </nav>
+</div>
