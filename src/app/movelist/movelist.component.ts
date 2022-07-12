@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { filter, Observable } from 'rxjs';
-import { BackendService } from '../services/backend.service';
-import { UrlRouterParsingService } from '../services/url-router-parsing.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-movelist',
@@ -9,24 +7,10 @@ import { UrlRouterParsingService } from '../services/url-router-parsing.service'
   styleUrls: ['./movelist.component.css']
 })
 export class MovelistComponent implements OnInit {
-  moveNames!: Observable<string[]>;
-  fragment!: string;
+  @Input() moveNames!: Observable<string[]>;
 
-  constructor(
-    public urlParser: UrlRouterParsingService, 
-    private _backend: BackendService,
-  ) { 
-    this.urlParser.gamePrefix().subscribe((gamePrefix: string) => {
-      this.urlParser.characterName().subscribe((characterName: string) => {
-          this.moveNames = this._backend.getAllMoveNamesFromCharacter(
-            gamePrefix, characterName
-          );
-      })
-    })
-    
-  }
-  ngOnInit(): void {
+  constructor() { }
 
-  }
+  ngOnInit(): void { }
 
 }

@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { filter, Subject} from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ICharacter } from '../services/backend.models';
 import { BackendService } from '../services/backend.service';
-import { UrlRouterParsingService } from '../services/url-router-parsing.service';
 
 @Component({
   selector: 'app-character-info',
@@ -10,19 +9,9 @@ import { UrlRouterParsingService } from '../services/url-router-parsing.service'
   styleUrls: ['./character-info.component.css']
 })
 export class CharacterInfoComponent implements OnInit {
-  character: Subject<ICharacter> = new Subject;
+  @Input() character!: Observable<ICharacter>;
 
-  constructor(
-    private _backend: BackendService, 
-    private urlParser: UrlRouterParsingService,
-  ) {
-    this.urlParser.gamePrefix().subscribe((gamePrefix: string) => {
-      this.urlParser.characterName().subscribe((characterName: string) => {
-        const characterObservable = this._backend.getCharacter(gamePrefix, characterName);
-        characterObservable.subscribe((character: ICharacter) => this.character.next(character));
-      })
-    })
-  }
+  constructor(private _backend: BackendService) {}
 
   getIconUrl(rawUrl: string | undefined): string {
     return `${this._backend.endpoint}${rawUrl}`;

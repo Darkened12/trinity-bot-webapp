@@ -9,15 +9,15 @@
                     <app-character-selection class="d-none d-xl-block" [textInputClass]="textInputClass" [imgClass]="imgClass"></app-character-selection>
                 </div>              
                 <div class="movelist">    
-                    <app-movelist class="d-none d-xl-block" ></app-movelist>
+                    <app-movelist [moveNames]="moveNamesSubject.asObservable()" class="d-none d-xl-block" ></app-movelist>
                 </div>
             </div>
         </div>  
         <div class="col-10 col-lg-8">
-            <app-move-info></app-move-info>
+            <app-move-info [moves]="movesSubject.asObservable()"></app-move-info>
         </div>
         <div class="col-xl-2 col-lg-4">
-            <app-character-info></app-character-info>
+            <app-character-info [character]="characterSubject.asObservable()" ></app-character-info>
         </div>
     </div>
 </div>
