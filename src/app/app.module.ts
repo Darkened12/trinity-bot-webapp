@@ -19,6 +19,7 @@ import { CharacterSelectionViewComponent } from './character-selection-view/char
 import { MoveInfoFrameDataComponent } from './move-info-frame-data/move-info-frame-data.component';
 import { MoveInfoSpriteComponent } from './move-info-sprite/move-info-sprite.component';
 import { MoveInfoNotesComponent } from './move-info-notes/move-info-notes.component';
+import { MoveInfoTitleComponent } from './move-info-title/move-info-title.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { MoveInfoNotesComponent } from './move-info-notes/move-info-notes.compon
     CharacterSelectionViewComponent,
     MoveInfoFrameDataComponent,
     MoveInfoSpriteComponent,
-    MoveInfoNotesComponent
+    MoveInfoNotesComponent,
+    MoveInfoTitleComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,10 @@
 <div #movesDiv *ngFor="let move of moves | async" class="container-fluid m-4 div-color">
-    <div class="row">
+    <div id="move" class="row">
         <div class="col-md-7 col-12">
-            <app-move-info-frame-data [move]="move"></app-move-info-frame-data>
+            <div class="d-flex flex-column">
+                <app-move-info-title [move]="move"></app-move-info-title>
+                <app-move-info-frame-data [move]="move"></app-move-info-frame-data>
+            </div>
         </div>
         <div class="col-md-5">
             <div class="d-flex flex-column m-2">
