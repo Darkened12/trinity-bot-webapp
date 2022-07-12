@@ -20,6 +20,7 @@ import { MoveInfoFrameDataComponent } from './move-info-frame-data/move-info-fra
 import { MoveInfoSpriteComponent } from './move-info-sprite/move-info-sprite.component';
 import { MoveInfoNotesComponent } from './move-info-notes/move-info-notes.component';
 import { MoveInfoTitleComponent } from './move-info-title/move-info-title.component';
+import { CharacterNavbarSmComponent } from './character-navbar-sm/character-navbar-sm.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { MoveInfoTitleComponent } from './move-info-title/move-info-title.compon
     MoveInfoFrameDataComponent,
     MoveInfoSpriteComponent,
     MoveInfoNotesComponent,
-    MoveInfoTitleComponent
+    MoveInfoTitleComponent,
+    CharacterNavbarSmComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,24 @@
+nav {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    nav {
+        display: block;
+    }
+
+    img {
+        width: 35%;
+        height: 35%;
+    }
+
+    a {
+        color: white;
+    }
+
+    ul {
+        max-height: 500px;
+        max-width: 100px;
+    }
+    
+}
