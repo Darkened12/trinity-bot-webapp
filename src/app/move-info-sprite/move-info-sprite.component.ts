@@ -12,7 +12,7 @@ export class MoveInfoSpriteComponent implements OnInit {
   constructor(private _backend: BackendService) { }
 
   getSpriteUrl(url: string): string {
-    return `${this._backend.endpoint}/${url}`;
+    return this._backend.parseSpriteUrl(url);
     
   }
 

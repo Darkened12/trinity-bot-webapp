@@ -24,6 +24,11 @@ export class BackendService {
     return characters;
   }
 
+  parseSpriteUrl(url: string): string {
+    return `${this.endpoint}/${url}`;
+    
+  }
+
   getCharacter(gamePrefix: string, characterName: string): Observable<ICharacter> {
     return this.http.get<ICharacter>(`${this.endpoint}${gamePrefix}/${characterName}`);
   }
