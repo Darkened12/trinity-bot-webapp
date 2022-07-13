@@ -23,6 +23,7 @@ export class MoveInfoFrameDataComponent implements OnInit {
   ];
 
   @Input() move!: IMove;
+  
   constructor() { }
 
   private toTitle(str: string): string {
