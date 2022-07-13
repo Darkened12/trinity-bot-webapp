@@ -7,7 +7,7 @@ import { ICharacter, ICharacterNames, IMove } from './backend.models';
   providedIn: 'root'
 })
 export class BackendService {
-  endpoint: string = 'http://192.168.0.10:5000/';
+  endpoint: string = 'https://kajun-bot.herokuapp.com/api/';
   constructor(private http: HttpClient) { }
 
   getAllCharacterNames(): Observable<Array<ICharacterNames>> {
