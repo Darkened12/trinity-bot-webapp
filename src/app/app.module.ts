@@ -16,10 +16,10 @@ import { CharacterInfoComponent } from './character-info/character-info.componen
 import { MoveInfoComponent } from './move-info/move-info.component';
 import { MovelistComponent } from './movelist/movelist.component';
 import { CharacterSelectionViewComponent } from './character-selection-view/character-selection-view.component';
-import { MoveInfoFrameDataComponent } from './move-info-frame-data/move-info-frame-data.component';
-import { MoveInfoSpriteComponent } from './move-info-sprite/move-info-sprite.component';
-import { MoveInfoNotesComponent } from './move-info-notes/move-info-notes.component';
-import { MoveInfoTitleComponent } from './move-info-title/move-info-title.component';
+import { MoveInfoFrameDataComponent } from './move-info/move-info-frame-data/move-info-frame-data.component';
+import { MoveInfoSpriteComponent } from './move-info/move-info-sprite/move-info-sprite.component';
+import { MoveInfoNotesComponent } from './move-info/move-info-notes/move-info-notes.component';
+import { MoveInfoTitleComponent } from './move-info/move-info-title/move-info-title.component';
 import { CharacterNavbarSmComponent } from './character-navbar-sm/character-navbar-sm.component';
 import { MovelistDropupComponent } from './character-navbar-sm/movelist-dropup/movelist-dropup.component';
 import { CharacterInfoButtonComponent } from './character-navbar-sm/character-info-button/character-info-button.component';

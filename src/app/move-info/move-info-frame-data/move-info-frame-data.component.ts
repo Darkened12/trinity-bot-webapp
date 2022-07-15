@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IMove } from '../services/backend.models';
+import { IMove } from '../../services/backend.models';
 
 @Component({
   selector: 'app-move-info-frame-data',

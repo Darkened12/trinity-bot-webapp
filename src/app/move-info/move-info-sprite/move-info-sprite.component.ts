@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IMove } from '../services/backend.models';
-import { BackendService } from '../services/backend.service';
+import { IMove } from '../../services/backend.models';
+import { BackendService } from '../../services/backend.service';
 
 @Component({
   selector: 'app-move-info-sprite',
