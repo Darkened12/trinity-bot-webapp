@@ -4,6 +4,10 @@ body {
     background-color: rgb(43, 42, 42);
 }
 
+.main-container {
+    max-width: 1366px;
+}
+
 h1, h2, p {
     color: white;
 }
