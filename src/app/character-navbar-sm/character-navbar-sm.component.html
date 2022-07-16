@@ -1,4 +1,4 @@
-<div class="fixed-bottom">
+<div class="fixed-bottom d-xl-none">
     <nav class="navbar navbar-expand-sm bg-dark">
         <div class="container">
             <a class="navbar-brand" [routerLink]="['/']">
@@ -7,7 +7,7 @@
             
             <app-movelist-dropup [moveNames]="moveNames"></app-movelist-dropup>
 
-            <app-character-info-button [character]="character"></app-character-info-button>
+            <app-character-info-button class="d-lg-none" [character]="character"></app-character-info-button>
               
         </div>
     </nav>

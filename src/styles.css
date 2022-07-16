@@ -1,9 +1,5 @@
 @import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
 
-body {
-    background-color: rgb(43, 42, 42);
-}
-
 .main-container {
     max-width: 1366px;
 }
@@ -16,8 +12,12 @@ h1, h2, p {
     background-color:rgb(92, 92, 92);
 }
 
-.li-color {
+.li-color2 {
     background-color: rgb(70, 70, 70);
+}
+
+.li-color {
+    background-color: rgb(43, 42, 42);
 }
 
 .cf {

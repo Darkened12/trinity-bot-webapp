@@ -1,15 +1,21 @@
-<div #movesDiv *ngFor="let move of moves | async" class="container-fluid mt-4 div-color">
-    <div id="move" class="row">
-        <div class="col-md-7 col-12">
+<div #movesDiv *ngFor="let move of moves | async" class="container-fluid mt-4 div-color border border-2 border-light rounded">
+    <div id="move" class="row me-1">
+        <div class="col-md-5">
             <div class="d-flex flex-column">
                 <app-move-info-title [move]="move"></app-move-info-title>
                 <app-move-info-frame-data [move]="move"></app-move-info-frame-data>
             </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-7">
             <div class="d-flex flex-column m-2">
-                <app-move-info-sprite [move]="move"></app-move-info-sprite>
-                <app-move-info-notes [move]="move"></app-move-info-notes>
+                <div class="col-sm">
+                    <app-move-info-sprite [move]="move"></app-move-info-sprite>
+                </div>  
+                <div class="col-12">
+                    <app-move-info-notes [move]="move"></app-move-info-notes>
+                </div>
+                
+                
             </div>
         </div>
     </div>

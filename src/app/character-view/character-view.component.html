@@ -1,7 +1,7 @@
 <div class="container-fluid main-container">
     <div class="row">
         <div class="col-xl-2">
-            <div class="d-flex flex-column position-fixed">
+            <div style="max-width: 200px;" class="d-flex flex-column align-items-center position-fixed border border-2 rounded border-light mt-4">
                 <div class="trinity-header">
                     <app-trinity-header class="d-none d-xl-block" [isSmall]="true"></app-trinity-header>
                 </div>
@@ -13,7 +13,7 @@
                 </div>
             </div>
         </div>  
-        <div class="col-10 col-lg-8">
+        <div class="col-lg-8">
             <div class="d-flex flex-column">
                 <app-move-info [moves]="movesSubject.asObservable()"></app-move-info>
                 <app-character-navbar-sm

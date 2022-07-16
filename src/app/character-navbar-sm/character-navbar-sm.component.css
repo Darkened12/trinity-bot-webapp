@@ -1,19 +1,10 @@
-nav {
-    display: none;
+
+img {
+    width: 35%;
+    height: 35%;
 }
 
-@media screen and (max-width: 768px) {
-    nav {
-        display: block;
-    }
-
-    img {
-        width: 35%;
-        height: 35%;
-    }
-
-    a {
-        color: white;
-    }
-    
+a {
+    color: white;
 }
+
