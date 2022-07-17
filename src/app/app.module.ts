@@ -21,10 +21,10 @@ import { MoveInfoFrameDataComponent } from './move-info/move-info-frame-data/mov
 import { MoveInfoSpriteComponent } from './move-info/move-info-sprite/move-info-sprite.component';
 import { MoveInfoNotesComponent } from './move-info/move-info-notes/move-info-notes.component';
 import { MoveInfoTitleComponent } from './move-info/move-info-title/move-info-title.component';
-import { CharacterNavbarBottomComponent } from './character-navbar-sm/character-navbar-bottom.component';
-import { MovelistDropupComponent } from './character-navbar-sm/movelist-dropup/movelist-dropup.component';
-import { CharacterInfoButtonComponent } from './character-navbar-sm/character-info-button/character-info-button.component';
-import { MoveSpriteTogglerComponent } from './character-navbar-sm/move-sprite-toggler/move-sprite-toggler.component';
+import { CharacterNavbarBottomComponent } from './character-navbar-bottom/character-navbar-bottom.component';
+import { MovelistDropupComponent } from './character-navbar-bottom/movelist-dropup/movelist-dropup.component';
+import { CharacterInfoButtonComponent } from './character-navbar-bottom/character-info-button/character-info-button.component';
+import { MoveSpriteTogglerComponent } from './character-navbar-bottom/move-sprite-toggler/move-sprite-toggler.component';
 import { MoveInfoPlaceholderComponent } from './move-info/move-info-placeholder/move-info-placeholder.component';
 import { CharacterInfoPlaceholderComponent } from './character-info/character-info-placeholder/character-info-placeholder.component';
 import { MovelistPlaceholderComponent } from './movelist/movelist-placeholder/movelist-placeholder.component';
