@@ -1,32 +1,39 @@
-<div style="max-height: 95%;" class="d-flex flex-column align-items-center mt-4 border border-2 border-light rounded position-fixed overflow-auto">
-    <img class="img-fluid p-2" src="{{ getIconUrl((character | async)?.icon)}}">
-    <h2 class="p-2 text-center">{{ (character | async)?.name }}</h2>
-    <div class="p-1">
-        <ul class="list-group">
-            <li class="list-group-item div-color border border-1 border-light rounded mb-2 mx-4">
-                <div class="d-flex flex-column align-items-center" style="height: 50px;">
-                    <span class="badge rounded-pill bg-dark w-100">Health</span>
-                    <p>{{ (character | async)?.health }}</p>
-                </div>
-            <li class="list-group-item div-color border border-1 border-light rounded mb-2 mx-4">
-                <div class="d-flex flex-column align-items-center" style="height: 50px;">
-                    <span class="badge rounded-pill bg-dark w-100">Jump Startup</span>
-                    <p>{{ (character | async)?.jump_startup }}</p>
-                </div>
-            </li>
-            <li class="list-group-item div-color border border-1 border-light rounded mb-2 mx-4">
-                <div class="d-flex flex-column align-items-center" style="height: 50px;">
-                    <span class="badge rounded-pill bg-dark w-100">Combo Rate</span>
-                    <p>{{ (character | async)?.combo_rate }}</p>
-                </div>
-            </li>
-            <li class="list-group-item div-color border border-1 border-light rounded mb-2 mx-4">
-                <div class="d-flex flex-column align-items-center">
-                    <span class="badge rounded-pill bg-dark w-100">Dash</span>
-                    <p>{{ (character | async)?.dash }}</p>
-                </div>
-            </li>
-        </ul>
+<div *ngIf="character | async; else characterLoading">
+    <div style="max-height: 95%;" class="d-flex flex-column align-items-center mt-4 border border-2 border-light rounded position-fixed overflow-auto">
+        <img class="img-fluid p-2" src="{{ getIconUrl((character | async)?.icon)}}">
+        <h2 class="p-2 text-center">{{ (character | async)?.name }}</h2>
+        <div class="p-1">
+            <ul class="list-group">
+                <li class="list-group-item div-color border border-1 border-light rounded mb-2 mx-4">
+                    <div class="d-flex flex-column align-items-center" style="height: 50px;">
+                        <span class="badge rounded-pill bg-dark w-100">Health</span>
+                        <p>{{ (character | async)?.health }}</p>
+                    </div>
+                <li class="list-group-item div-color border border-1 border-light rounded mb-2 mx-4">
+                    <div class="d-flex flex-column align-items-center" style="height: 50px;">
+                        <span class="badge rounded-pill bg-dark w-100">Jump Startup</span>
+                        <p>{{ (character | async)?.jump_startup }}</p>
+                    </div>
+                </li>
+                <li class="list-group-item div-color border border-1 border-light rounded mb-2 mx-4">
+                    <div class="d-flex flex-column align-items-center" style="height: 50px;">
+                        <span class="badge rounded-pill bg-dark w-100">Combo Rate</span>
+                        <p>{{ (character | async)?.combo_rate }}</p>
+                    </div>
+                </li>
+                <li class="list-group-item div-color border border-1 border-light rounded mb-2 mx-4">
+                    <div class="d-flex flex-column align-items-center">
+                        <span class="badge rounded-pill bg-dark w-100">Dash</span>
+                        <p>{{ (character | async)?.dash }}</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
+    
+    
 </div>
 
+<ng-template #characterLoading>
+    <app-character-info-placeholder class="d-none d-lg-block"></app-character-info-placeholder>
+</ng-template>
