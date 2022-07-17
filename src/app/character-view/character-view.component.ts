@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ReplaySubject } from 'rxjs';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
+import { BehaviorSubject, ReplaySubject } from 'rxjs';
 import { ICharacter, IMove } from '../services/backend.models';
 import { BackendService } from '../services/backend.service';
 import { UrlRouterParsingService } from '../services/url-router-parsing.service';
@@ -16,11 +16,16 @@ export class CharacterViewComponent implements OnInit {
   characterSubject: ReplaySubject<ICharacter> = new ReplaySubject(1);
   movesSubject: ReplaySubject<Array<IMove>> = new ReplaySubject(1);
   moveNamesSubject: ReplaySubject<Array<string>> = new ReplaySubject(1);
+  spriteCheckBox: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor(private _backend: BackendService, private _urlParser: UrlRouterParsingService) { }
 
   private _getMoveNames(moves: IMove[]): string[] {
     return moves.map((move: IMove) => move.move_name);
+  }
+
+  onSpriteCheckBoxEvent(event: boolean) {
+    this.spriteCheckBox.next(event);
   }
 
   ngOnInit(): void { 

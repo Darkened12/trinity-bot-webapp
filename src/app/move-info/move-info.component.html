@@ -3,19 +3,19 @@
         <div class="col-md-5">
             <div class="d-flex flex-column">
                 <app-move-info-title [move]="move"></app-move-info-title>
-                <app-move-info-frame-data [move]="move"></app-move-info-frame-data>
+                <app-move-info-frame-data class="d-md-none" [isMobile]="true" [move]="move" [spriteCheckBox]="isFrameDataHidden.asObservable()"></app-move-info-frame-data>
+                <app-move-info-frame-data class="d-none d-md-block" [move]="move" [spriteCheckBox]="isFrameDataHidden.asObservable()"></app-move-info-frame-data>
             </div>
         </div>
         <div class="col-md-7">
             <div class="d-flex flex-column m-2">
                 <div class="col-sm">
-                    <app-move-info-sprite [move]="move"></app-move-info-sprite>
+                    <app-move-info-sprite class="d-md-none" [isMobile]="true" [move]="move" [spriteCheckBox]="isSpriteHidden.asObservable()"></app-move-info-sprite>
+                    <app-move-info-sprite class="d-none d-md-block" [move]="move" [spriteCheckBox]="isSpriteHidden.asObservable()"></app-move-info-sprite>   
                 </div>  
                 <div class="col-12">
                     <app-move-info-notes [move]="move"></app-move-info-notes>
-                </div>
-                
-                
+                </div>   
             </div>
         </div>
     </div>

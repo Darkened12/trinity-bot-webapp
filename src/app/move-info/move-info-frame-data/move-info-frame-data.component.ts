@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { IMove } from '../../services/backend.models';
 
 @Component({
@@ -23,7 +24,10 @@ export class MoveInfoFrameDataComponent implements OnInit {
   ];
 
   @Input() move!: IMove;
-  
+  @Input() spriteCheckBox!: Observable<boolean>;
+  @Input() isMobile: boolean = false;
+  screenSizeObserver: Subject<boolean> = new Subject();
+
   constructor() { }
 
   private toTitle(str: string): string {

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ICharacter } from '../services/backend.models';
 
@@ -10,7 +10,14 @@ import { ICharacter } from '../services/backend.models';
 export class CharacterNavbarSmComponent implements OnInit {
   @Input() moveNames!: Observable<string[]>;
   @Input() character!: Observable<ICharacter>;
+
+  @Output() spriteCheckBox = new EventEmitter<boolean>();
+  
   constructor() { }
+
+  onSpriteCheckBoxEvent(event: boolean) {
+    this.spriteCheckBox.emit(event);
+  }
 
   ngOnInit(): void {
   }

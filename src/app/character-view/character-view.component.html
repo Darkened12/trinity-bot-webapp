@@ -15,8 +15,9 @@
         </div>  
         <div class="col-lg-8">
             <div class="d-flex flex-column">
-                <app-move-info [moves]="movesSubject.asObservable()"></app-move-info>
+                <app-move-info [moves]="movesSubject.asObservable()" [spriteCheckBox]="spriteCheckBox.asObservable()"></app-move-info>
                 <app-character-navbar-sm
+                 (spriteCheckBox)="onSpriteCheckBoxEvent($event)"
                  [moveNames]="moveNamesSubject.asObservable()"
                  [character]="characterSubject.asObservable()">
                 </app-character-navbar-sm>

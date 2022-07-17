@@ -1,8 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
-import { filter, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { IMove } from '../services/backend.models';
-import { BackendService } from '../services/backend.service';
 import { UrlRouterParsingService } from '../services/url-router-parsing.service';
 
 @Component({
@@ -12,13 +11,18 @@ import { UrlRouterParsingService } from '../services/url-router-parsing.service'
 })
 export class MoveInfoComponent implements OnInit {
   @Input() moves!: Observable<Array<IMove>>;
+  @Input() spriteCheckBox!: Observable<boolean>;
+  
+  isSpriteHidden: BehaviorSubject<boolean> = new BehaviorSubject(true);
+  isFrameDataHidden: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   @ViewChildren('movesDiv') movesDiv!: QueryList<any>;
 
   constructor(
     private urlParser: UrlRouterParsingService,
     @Inject(DOCUMENT) private document: Document
-  ) { }
+  ) { 
+  }
 
   private onAnchorDirectLink(moveAnchor: string) {
     this.movesDiv.changes.subscribe(t => {
@@ -32,7 +36,12 @@ export class MoveInfoComponent implements OnInit {
   ngAfterViewInit() {
     this.urlParser.moveAnchor().subscribe((moveAnchor: string) => {
       this.onAnchorDirectLink(moveAnchor);
-    })
+    });
+
+    this.spriteCheckBox.subscribe((value: boolean) => {
+      this.isSpriteHidden.next(!value);
+      this.isFrameDataHidden.next(value);
+    });
 
   }
 }

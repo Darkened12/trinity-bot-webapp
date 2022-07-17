@@ -9,6 +9,7 @@ import { CharacterSelectionComponent } from './character-selection/character-sel
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material/autocomplete'; 
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatCheckboxModule} from '@angular/material/checkbox'; 
 import {MatInputModule} from '@angular/material/input'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CharacterViewComponent } from './character-view/character-view.component';
@@ -23,6 +24,7 @@ import { MoveInfoTitleComponent } from './move-info/move-info-title/move-info-ti
 import { CharacterNavbarSmComponent } from './character-navbar-sm/character-navbar-sm.component';
 import { MovelistDropupComponent } from './character-navbar-sm/movelist-dropup/movelist-dropup.component';
 import { CharacterInfoButtonComponent } from './character-navbar-sm/character-info-button/character-info-button.component';
+import { MoveSpriteTogglerComponent } from './character-navbar-sm/move-sprite-toggler/move-sprite-toggler.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { CharacterInfoButtonComponent } from './character-navbar-sm/character-in
     MoveInfoTitleComponent,
     CharacterNavbarSmComponent,
     MovelistDropupComponent,
-    CharacterInfoButtonComponent
+    CharacterInfoButtonComponent,
+    MoveSpriteTogglerComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +52,7 @@ import { CharacterInfoButtonComponent } from './character-navbar-sm/character-in
     ReactiveFormsModule,
     MatAutocompleteModule,
     MatFormFieldModule,
+    MatCheckboxModule,
     MatInputModule,
     BrowserAnimationsModule
   ],

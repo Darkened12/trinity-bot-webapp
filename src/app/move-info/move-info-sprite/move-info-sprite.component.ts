@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { IMove } from '../../services/backend.models';
 import { BackendService } from '../../services/backend.service';
 
@@ -9,6 +10,9 @@ import { BackendService } from '../../services/backend.service';
 })
 export class MoveInfoSpriteComponent implements OnInit {
   @Input() move!: IMove;
+  @Input() spriteCheckBox!: Observable<boolean>;
+  @Input() isMobile: boolean = false;
+
   constructor(private _backend: BackendService) { }
 
   getSpriteUrl(url: string): string {
