@@ -27,6 +27,7 @@ import { CharacterInfoButtonComponent } from './character-navbar-sm/character-in
 import { MoveSpriteTogglerComponent } from './character-navbar-sm/move-sprite-toggler/move-sprite-toggler.component';
 import { MoveInfoPlaceholderComponent } from './move-info/move-info-placeholder/move-info-placeholder.component';
 import { CharacterInfoPlaceholderComponent } from './character-info/character-info-placeholder/character-info-placeholder.component';
+import { MovelistPlaceholderComponent } from './movelist/movelist-placeholder/movelist-placeholder.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { CharacterInfoPlaceholderComponent } from './character-info/character-in
     CharacterInfoButtonComponent,
     MoveSpriteTogglerComponent,
     MoveInfoPlaceholderComponent,
-    CharacterInfoPlaceholderComponent
+    CharacterInfoPlaceholderComponent,
+    MovelistPlaceholderComponent
   ],
   imports: [
     BrowserModule,

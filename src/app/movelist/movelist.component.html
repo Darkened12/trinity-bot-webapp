@@ -1,9 +1,15 @@
-<div style="max-height: 425px;" class="container">
-    <div id="movelist-navbar" class="d-flex flex-column p-3 m-4 overflow-auto">
-        <ul class="list-group">
-            <li class="list-group-item text-center div-color border border-1 rounded-left rounded-right" *ngFor="let moveName of moveNames | async">
-                <a style="color: white;" class="btn" [fragment]="moveName" [routerLink]="['./']">{{ moveName }}</a>
-            </li>
-        </ul>
+<div *ngIf="moveNames | async; else movelistLoading">
+    <div style="max-height: 425px;" class="container">
+        <div id="movelist-navbar" class="d-flex flex-column p-3 m-4 overflow-auto">
+            <ul class="list-group">
+                <li class="list-group-item text-center div-color border border-1 rounded-left rounded-right" *ngFor="let moveName of moveNames | async">
+                    <a style="color: white;" class="btn" [fragment]="moveName" [routerLink]="['./']">{{ moveName }}</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
+
+<ng-template #movelistLoading>
+    <app-movelist-placeholder class="d-none d-xl-block"></app-movelist-placeholder>
+</ng-template>
