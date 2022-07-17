@@ -3,11 +3,11 @@ import { Observable } from 'rxjs';
 import { ICharacter } from '../services/backend.models';
 
 @Component({
-  selector: 'app-character-navbar-sm',
-  templateUrl: './character-navbar-sm.component.html',
-  styleUrls: ['./character-navbar-sm.component.css']
+  selector: 'app-character-navbar-bottom',
+  templateUrl: './character-navbar-bottom.component.html',
+  styleUrls: ['./character-navbar-bottom.component.css']
 })
-export class CharacterNavbarSmComponent implements OnInit {
+export class CharacterNavbarBottomComponent implements OnInit {
   @Input() moveNames!: Observable<string[]>;
   @Input() character!: Observable<ICharacter>;
 
