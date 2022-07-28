@@ -4,6 +4,10 @@
             <a class="navbar-brand d-none d-sm-block" [routerLink]="['/']">
                 <img class="border rounded-circle" src="https://cdn.discordapp.com/app-icons/576357396809777153/d50202ebcec4a59c7cd2d45f999a7e39.png">
             </a>
+
+            <a class="d-sm-none btn btn-secondary" [routerLink]="['/']">
+                home
+            </a>
             
             <app-move-sprite-toggler class="d-md-none" (checkBoxValue)="onSpriteCheckBoxEvent($event)"></app-move-sprite-toggler>
             <app-movelist-dropup [moveNames]="moveNames"></app-movelist-dropup>

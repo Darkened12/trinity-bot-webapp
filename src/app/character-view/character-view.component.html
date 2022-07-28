@@ -15,8 +15,10 @@
         </div>  
         <div class="col-lg-8">
             <div class="d-flex flex-column">
-                <app-character-navbar-top></app-character-navbar-top>
-                <div style="height: 50px;" class="d-sm-none"></div>
+                <!--
+                    <app-character-navbar-top></app-character-navbar-top>
+                    <div style="height: 50px;" class="d-sm-none"></div>
+                -->
                 <app-move-info [moves]="movesSubject.asObservable()" [spriteCheckBox]="spriteCheckBox.asObservable()"></app-move-info>
                 <app-character-navbar-bottom
                  (spriteCheckBox)="onSpriteCheckBoxEvent($event)"
