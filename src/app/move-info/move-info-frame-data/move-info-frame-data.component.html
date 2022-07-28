@@ -4,7 +4,7 @@
             <ul class="list-group list-group-flush">
                 <li *ngFor="let property of slicedMoves" style="height: 80px; width: 130px;" class="m-1 list-group-item div-color overflow-auto">
                     <div class="d-flex flex-column align-items-center">
-                        <span class="badge badge-color rounded-pill w-100">{{ parseProperty(property) }}</span>
+                        <span class="badge badge-color rounded w-100">{{ parseProperty(property) }}</span>
                         <p>{{ getMoveValueByProperty(move, property) }}</p>
                     </div>      
                 </li>
