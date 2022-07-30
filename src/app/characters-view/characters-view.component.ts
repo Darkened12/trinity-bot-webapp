@@ -29,8 +29,7 @@ export class CharactersViewComponent implements OnInit {
         this.tagNames.next(
           characterNames.filter((value: ICharacterNames) => value.gamePrefix === 'tag')
         );
-      },
-      error => this._errorHandler.onError(error)
+      }
     );
    }
 
