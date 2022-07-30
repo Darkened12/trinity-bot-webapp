@@ -9,7 +9,8 @@ const routes: Routes = [
   {path: 'app', component: CharacterSelectionViewComponent},
   {path: 'app/:gamePrefix/:characterName', component: CharacterViewComponent},
   {path: 'app/characters', component: CharactersViewComponent},
-  {path: '**', pathMatch: 'full', component: PageNotFoundComponent}
+  {path: '**', pathMatch: 'full', redirectTo: 'app/404'},
+  {path: 'app/404', component: PageNotFoundComponent}
 ];
 
 @NgModule({
