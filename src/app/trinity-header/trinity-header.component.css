@@ -5,3 +5,7 @@ h1, h5 {
 h5 {
     padding-left: 15px;
 }
+
+a {
+    text-decoration: none;
+}
