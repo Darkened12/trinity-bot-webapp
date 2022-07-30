@@ -32,6 +32,7 @@ import { MovelistPlaceholderComponent } from './movelist/movelist-placeholder/mo
 import { CharacterNavbarTopComponent } from './character-navbar-top/character-navbar-top.component';
 import { CharactersViewComponent } from './characters-view/characters-view.component';
 import { CharactersToggleComponent } from './characters-view/characters-toggle/characters-toggle.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { CharactersToggleComponent } from './characters-view/characters-toggle/c
     MovelistPlaceholderComponent,
     CharacterNavbarTopComponent,
     CharactersViewComponent,
-    CharactersToggleComponent
+    CharactersToggleComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
