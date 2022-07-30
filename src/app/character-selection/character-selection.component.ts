@@ -7,6 +7,7 @@ import { StringMatchingService } from '../services/string-matching.service';
 import { ICharacterNames } from '../services/backend.models';
 import { IMatchedPartialCharacter, IPartialCharacter } from './character-selection.models';
 import { Router } from '@angular/router';
+import { GlobalErrorHandlerService } from '../services/global-error-handler.service';
 
 @Component({
   selector: 'app-character-selection',
@@ -29,7 +30,8 @@ export class CharacterSelectionComponent implements OnInit {
     private _backend: BackendService, 
     private _stringMatching: StringMatchingService,
     private _fb: FormBuilder,
-    private _router: Router
+    private _router: Router,
+    private _errorHandler: GlobalErrorHandlerService
   ) {
     this.characterNames = this._backend.getAllCharacterNames();
     this.matchedCharacters = new Observable(subscriber => {
@@ -45,7 +47,9 @@ export class CharacterSelectionComponent implements OnInit {
             
         });
           subscriber.next(parsedCharacters);
-        })
+        },
+        error => this._errorHandler.onError(error)
+        )
       })
     });
   }

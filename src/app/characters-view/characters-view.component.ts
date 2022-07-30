@@ -3,6 +3,7 @@ import { fadeInDownOnEnterAnimation, fadeInLeftOnEnterAnimation, fadeInUpOnEnter
 import { BehaviorSubject, ReplaySubject } from 'rxjs';
 import { ICharacterNames } from '../services/backend.models';
 import { BackendService } from '../services/backend.service';
+import { GlobalErrorHandlerService } from '../services/global-error-handler.service';
 
 @Component({
   selector: 'app-characters-view',
@@ -19,7 +20,7 @@ export class CharactersViewComponent implements OnInit {
   tagNames = new ReplaySubject<ICharacterNames[]>(1);
   charactersToggle = new BehaviorSubject<string>('CF');
 
-  constructor(public backend: BackendService) {
+  constructor(public backend: BackendService, private _errorHandler: GlobalErrorHandlerService) {
     this.backend.getAllCharacterNames().subscribe(
       (characterNames: ICharacterNames[]) => {
         this.cfNames.next(
@@ -28,7 +29,8 @@ export class CharactersViewComponent implements OnInit {
         this.tagNames.next(
           characterNames.filter((value: ICharacterNames) => value.gamePrefix === 'tag')
         );
-      }
+      },
+      error => this._errorHandler.onError(error)
     );
    }
 

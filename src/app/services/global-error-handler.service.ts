@@ -10,8 +10,9 @@ export class GlobalErrorHandlerService {
   constructor(private _router: Router) { }
 
   onError(error: any) {
+    console.log(error);
     if (error?.name === 'HttpErrorResponse') {
-      this._router.navigate([PageNotFoundComponent])
+      this._router.navigate(['app/404'])
     }
   }
 }

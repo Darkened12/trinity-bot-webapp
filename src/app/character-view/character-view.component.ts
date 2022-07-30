@@ -46,7 +46,8 @@ export class CharacterViewComponent implements OnInit {
           (moves: IMove[]) => {
             this.movesSubject.next(moves);
             this.moveNamesSubject.next(this._getMoveNames(moves));
-          }
+          },
+          error => this._errorHandler.onError(error)
         );
       });
     });
