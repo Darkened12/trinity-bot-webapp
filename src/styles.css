@@ -40,6 +40,10 @@ h1, h2, p {
     background-color: rgb(94, 55, 202);
 }
 
+.spinner-color {
+    color: rgb(94, 55, 202);
+}
+
 .placeholder-div {
     height: 100vh;
 }
