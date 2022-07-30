@@ -35,7 +35,7 @@ export class UrlRouterParsingService {
   }
 
   private _splitUrlInSegments(url: string): string[] {
-    return url.split('/').slice(1);
+    return url.split('/').slice(2);
   }
 
   private _parseEmptyValue(value: string): boolean {

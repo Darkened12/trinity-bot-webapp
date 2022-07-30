@@ -5,9 +5,9 @@ import { CharacterViewComponent } from './character-view/character-view.componen
 import { CharactersViewComponent } from './characters-view/characters-view.component';
 
 const routes: Routes = [
-  {path: '', component: CharacterSelectionViewComponent},
-  {path: ':gamePrefix/:characterName', component: CharacterViewComponent},
-  {path: 'characters', component: CharactersViewComponent}
+  {path: 'app', component: CharacterSelectionViewComponent},
+  {path: 'app/:gamePrefix/:characterName', component: CharacterViewComponent},
+  {path: 'app/characters', component: CharactersViewComponent}
 ];
 
 @NgModule({
