@@ -42,5 +42,9 @@ export class BackendService {
   getAllMovesFromCharacter(gamePrefix: string, characterName: string): Observable<Array<IMove>> {
     return this.http.get<Array<IMove>>(`${this.endpoint}${gamePrefix}/${characterName}/get_all_moves`);
   }
+
+  getIconUrl(gamePrefix: string, characterName: string): string {
+    return `${this.endpoint}${gamePrefix}/${characterName}/icon.png`
+  }
   
 }

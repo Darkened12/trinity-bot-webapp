@@ -1,0 +1,4 @@
+<mat-button-toggle-group name="characterSelection" (change)="charactersToggle.emit($event.value)">
+    <mat-button-toggle value="CF" [checked]="true">CF</mat-button-toggle>
+    <mat-button-toggle value="TAG">TAG</mat-button-toggle>
+</mat-button-toggle-group>

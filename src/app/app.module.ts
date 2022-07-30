@@ -11,6 +11,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatCheckboxModule} from '@angular/material/checkbox'; 
 import {MatInputModule} from '@angular/material/input'; 
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CharacterViewComponent } from './character-view/character-view.component';
 import { CharacterInfoComponent } from './character-info/character-info.component';
@@ -29,6 +30,8 @@ import { MoveInfoPlaceholderComponent } from './move-info/move-info-placeholder/
 import { CharacterInfoPlaceholderComponent } from './character-info/character-info-placeholder/character-info-placeholder.component';
 import { MovelistPlaceholderComponent } from './movelist/movelist-placeholder/movelist-placeholder.component';
 import { CharacterNavbarTopComponent } from './character-navbar-top/character-navbar-top.component';
+import { CharactersViewComponent } from './characters-view/characters-view.component';
+import { CharactersToggleComponent } from './characters-view/characters-toggle/characters-toggle.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +54,9 @@ import { CharacterNavbarTopComponent } from './character-navbar-top/character-na
     MoveInfoPlaceholderComponent,
     CharacterInfoPlaceholderComponent,
     MovelistPlaceholderComponent,
-    CharacterNavbarTopComponent
+    CharacterNavbarTopComponent,
+    CharactersViewComponent,
+    CharactersToggleComponent
   ],
   imports: [
     BrowserModule,
@@ -62,6 +67,7 @@ import { CharacterNavbarTopComponent } from './character-navbar-top/character-na
     MatFormFieldModule,
     MatCheckboxModule,
     MatInputModule,
+    MatButtonToggleModule,
     BrowserAnimationsModule
   ],
   providers: [],

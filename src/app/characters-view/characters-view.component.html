@@ -1,0 +1,35 @@
+<div class="container pt-4">
+    <div class="row">
+        <div class="col-sm-2">
+            <app-characters-toggle (charactersToggle)="charactersToggle.next($event)"></app-characters-toggle>
+        </div>
+        <div class="col-sm-10">
+            <div *ngIf="(cfNames | async) || (tagNames | async)">
+                <div *ngIf="(charactersToggle | async) === 'CF'">
+                    <div *ngFor="let characterNames of cfNames | async">
+                        <div class="row pb-4" *ngFor="let characterNames_ of characterNamesInChunks(characterNames.characterNames, 6)">
+                            <div class="col" *ngFor="let characterName of characterNames_">
+                                <a [routerLink]="['../' + characterNames.gamePrefix + '/' + characterName]">
+                                    <img class="img-fluid" loading="lazy" src="{{backend.getIconUrl(characterNames.gamePrefix, characterName)}}">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="(charactersToggle | async) === 'TAG'">
+                    <div *ngFor="let characterNames of tagNames | async">
+                        <div class="row pb-4" *ngFor="let characterNames_ of characterNamesInChunks(characterNames.characterNames, 6)">
+                            <div class="col" *ngFor="let characterName of characterNames_">
+                                <a [routerLink]="['../' + characterNames.gamePrefix + '/' + characterName]">
+                                    <img class="img-fluid" loading="lazy" src="{{backend.getIconUrl(characterNames.gamePrefix, characterName)}}">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
