@@ -1,12 +1,18 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable, ReplaySubject } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { fadeInDownOnEnterAnimation, fadeInLeftOnEnterAnimation, fadeInUpOnEnterAnimation } from 'angular-animations';
+import { BehaviorSubject, ReplaySubject } from 'rxjs';
 import { ICharacterNames } from '../services/backend.models';
 import { BackendService } from '../services/backend.service';
 
 @Component({
   selector: 'app-characters-view',
   templateUrl: './characters-view.component.html',
-  styleUrls: ['./characters-view.component.css']
+  styleUrls: ['./characters-view.component.css'],
+  animations: [
+    fadeInDownOnEnterAnimation(),
+    fadeInLeftOnEnterAnimation(),
+    fadeInUpOnEnterAnimation()
+  ]
 })
 export class CharactersViewComponent implements OnInit {
   cfNames = new ReplaySubject<ICharacterNames[]>(1);

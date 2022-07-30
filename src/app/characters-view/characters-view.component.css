@@ -1,3 +1,13 @@
 img {
     max-height: 80px;
 }
+
+.main-container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.spinner {
+    width: 100px;
+    height: 100px;
+}
