@@ -1,9 +1,13 @@
-<div style="height: 70vh;" class="container d-flex flex-column align-items-center justify-content-center">
-    <div class="row p-4">
-        <h1 style="color: white;">Page Not Found!</h1>
+<div [@fadeInDownBigOnEnter] style="height: 70vh;" class="container d-flex flex-column align-items-center justify-content-center">
+    <div class="row">
+        <h1>Page Not Found!</h1>
+    </div>
+
+    <div class="row pb-4 pt-2">
+        <p>Either the server is unavailable or this page does not exist.</p>
     </div>
     
-    <div class="row p-4">
+    <div class="row pt-4">
         <a [routerLink]="['/app']" class="btn btn-secondary mb-4">Home</a>
         <a [routerLink]="['/app/characters']" class="btn btn-secondary">Character selection</a>
     </div>
