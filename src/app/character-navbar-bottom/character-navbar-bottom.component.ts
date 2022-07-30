@@ -1,11 +1,15 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { fadeInUpOnEnterAnimation } from 'angular-animations';
 import { Observable } from 'rxjs';
 import { ICharacter } from '../services/backend.models';
 
 @Component({
   selector: 'app-character-navbar-bottom',
   templateUrl: './character-navbar-bottom.component.html',
-  styleUrls: ['./character-navbar-bottom.component.css']
+  styleUrls: ['./character-navbar-bottom.component.css'],
+  animations: [
+    fadeInUpOnEnterAnimation()
+  ]
 })
 export class CharacterNavbarBottomComponent implements OnInit {
   @Input() moveNames!: Observable<string[]>;
