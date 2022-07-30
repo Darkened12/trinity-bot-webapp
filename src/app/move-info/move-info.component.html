@@ -1,5 +1,5 @@
 <div *ngIf="moves | async; else loading">
-    <div #movesDiv *ngFor="let move of moves | async" class="container-fluid mt-4 div-color rounded shadow">
+    <div @fadeInUpOnEnter #movesDiv *ngFor="let move of moves | async" class="container-fluid mt-4 div-color rounded shadow">
         <div class="row">
             <app-move-info-title [move]="move"></app-move-info-title>
         </div>

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { fadeInRightOnEnterAnimation } from 'angular-animations';
 import { Observable } from 'rxjs';
 import { ICharacter } from '../services/backend.models';
 import { BackendService } from '../services/backend.service';
@@ -6,7 +7,10 @@ import { BackendService } from '../services/backend.service';
 @Component({
   selector: 'app-character-info',
   templateUrl: './character-info.component.html',
-  styleUrls: ['./character-info.component.css']
+  styleUrls: ['./character-info.component.css'],
+  animations: [
+    fadeInRightOnEnterAnimation()
+  ]
 })
 export class CharacterInfoComponent implements OnInit {
   @Input() character!: Observable<ICharacter>;

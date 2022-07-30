@@ -1,5 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { fadeInUpOnEnterAnimation } from 'angular-animations';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { IMove } from '../services/backend.models';
 import { UrlRouterParsingService } from '../services/url-router-parsing.service';
@@ -7,7 +8,10 @@ import { UrlRouterParsingService } from '../services/url-router-parsing.service'
 @Component({
   selector: 'app-move-info',
   templateUrl: './move-info.component.html',
-  styleUrls: ['./move-info.component.css']
+  styleUrls: ['./move-info.component.css'],
+  animations: [
+    fadeInUpOnEnterAnimation()
+  ]
 })
 export class MoveInfoComponent implements OnInit {
   @Input() moves!: Observable<Array<IMove>>;

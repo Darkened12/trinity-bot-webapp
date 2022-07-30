@@ -1,5 +1,5 @@
 <div *ngIf="character | async; else characterLoading">
-    <div style="max-height: 95%;" class="d-flex flex-column align-items-center mt-4 position-fixed overflow-auto">
+    <div [@fadeInRightOnEnter] style="max-height: 95%;" class="d-flex flex-column align-items-center mt-4 position-fixed overflow-auto">
         <img class="img-fluid p-2" src="{{ getIconUrl((character | async)?.icon)}}">
         <h2 class="p-2 text-center">{{ (character | async)?.name }}</h2>
         <div class="p-1">
