@@ -1,6 +1,7 @@
 <div class="container pt-4">
     <div class="row">
         <div class="col-sm-2">
+            <a class="btn btn-primary" [routerLink]="['/']">Back</a>
             <app-characters-toggle (charactersToggle)="charactersToggle.next($event)"></app-characters-toggle>
         </div>
         <div class="col-sm-10">
