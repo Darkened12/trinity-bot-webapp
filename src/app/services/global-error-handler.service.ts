@@ -9,9 +9,5 @@ export class GlobalErrorHandlerService {
 
   constructor(private _router: Router) { }
 
-  onError(error: any) {
-    if (error?.name === 'HttpErrorResponse' && error?.status === 500) {
-      this._router.navigate(['app/404'])
-    }
-  }
+  onError(error: any) { }
 }

@@ -1,34 +1,40 @@
-<div class="container-fluid main-container">
-    <div class="row">
-        <div class="col-xl-2">
-            <div style="max-width: 200px;" class="d-flex flex-column align-items-center position-fixed mt-4">
-                <div class="trinity-header">
-                    <app-trinity-header class="d-none d-xl-block" [isSmall]="true"></app-trinity-header>
+<div *ngIf="!(error | async)">
+    <div class="container-fluid main-container">
+        <div class="row">
+            <div class="col-xl-2">
+                <div style="max-width: 200px;" class="d-flex flex-column align-items-center position-fixed mt-4">
+                    <div class="trinity-header">
+                        <app-trinity-header class="d-none d-xl-block" [isSmall]="true"></app-trinity-header>
+                    </div>
+                    <div>
+                        <a class="d-none d-xl-block btn my-btn m-4" [routerLink]="['/app/characters']">Select character</a>
+                    </div>              
+                    <div class="movelist">    
+                        <app-movelist [moveNames]="moveNamesSubject.asObservable()" class="d-none d-xl-block" ></app-movelist>
+                    </div>
                 </div>
-                <div>
-                    <a class="d-none d-xl-block btn my-btn m-4" [routerLink]="['/app/characters']">Select character</a>
-                </div>              
-                <div class="movelist">    
-                    <app-movelist [moveNames]="moveNamesSubject.asObservable()" class="d-none d-xl-block" ></app-movelist>
+            </div>  
+            <div class="col-lg-8">
+                <div class="d-flex flex-column">
+                    <!--
+                        <app-character-navbar-top></app-character-navbar-top>
+                        <div style="height: 50px;" class="d-sm-none"></div>
+                    -->
+                    <app-move-info [moves]="movesSubject.asObservable()" [spriteCheckBox]="spriteCheckBox.asObservable()"></app-move-info>
+                    <app-character-navbar-bottom
+                     (spriteCheckBox)="onSpriteCheckBoxEvent($event)"
+                     [moveNames]="moveNamesSubject.asObservable()"
+                     [character]="characterSubject.asObservable()">
+                    </app-character-navbar-bottom>
                 </div>
             </div>
-        </div>  
-        <div class="col-lg-8">
-            <div class="d-flex flex-column">
-                <!--
-                    <app-character-navbar-top></app-character-navbar-top>
-                    <div style="height: 50px;" class="d-sm-none"></div>
-                -->
-                <app-move-info [moves]="movesSubject.asObservable()" [spriteCheckBox]="spriteCheckBox.asObservable()"></app-move-info>
-                <app-character-navbar-bottom
-                 (spriteCheckBox)="onSpriteCheckBoxEvent($event)"
-                 [moveNames]="moveNamesSubject.asObservable()"
-                 [character]="characterSubject.asObservable()">
-                </app-character-navbar-bottom>
+            <div class="col-xl-2 col-lg-4">
+                <app-character-info [character]="characterSubject.asObservable()" ></app-character-info>
             </div>
-        </div>
-        <div class="col-xl-2 col-lg-4">
-            <app-character-info [character]="characterSubject.asObservable()" ></app-character-info>
         </div>
     </div>
+</div>
+
+<div *ngIf="(error | async) && !(characterSubject | async)">
+    <app-page-not-found></app-page-not-found>
 </div>

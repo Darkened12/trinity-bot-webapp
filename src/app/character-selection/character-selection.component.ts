@@ -48,8 +48,7 @@ export class CharacterSelectionComponent implements OnInit {
                 
             });
               subscriber.next(parsedCharacters);
-            },
-            error => this._errorHandler.onError(error)
+            }
             )
           })
     });

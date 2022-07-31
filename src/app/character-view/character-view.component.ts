@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
-import { BehaviorSubject, ReplaySubject } from 'rxjs';
+import { BehaviorSubject, ReplaySubject, Subject } from 'rxjs';
 import { ICharacter, IMove } from '../services/backend.models';
 import { BackendService } from '../services/backend.service';
 import { GlobalErrorHandlerService } from '../services/global-error-handler.service';
@@ -18,6 +18,7 @@ export class CharacterViewComponent implements OnInit {
   movesSubject: ReplaySubject<Array<IMove>> = new ReplaySubject(1);
   moveNamesSubject: ReplaySubject<Array<string>> = new ReplaySubject(1);
   spriteCheckBox: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  error: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor(
     private _backend: BackendService, 
@@ -39,7 +40,7 @@ export class CharacterViewComponent implements OnInit {
         
         this._backend.getCharacter(gamePrefix, characterName).subscribe(
           (character: ICharacter) => this.characterSubject.next(character),
-          error => this._errorHandler.onError(error)
+          error => this.error.next(true)
         );
 
         this._backend.getAllMovesFromCharacter(gamePrefix, characterName).subscribe(
@@ -47,7 +48,7 @@ export class CharacterViewComponent implements OnInit {
             this.movesSubject.next(moves);
             this.moveNamesSubject.next(this._getMoveNames(moves));
           },
-          error => this._errorHandler.onError(error)
+          error => this.error.next(true)
         );
       });
     });
