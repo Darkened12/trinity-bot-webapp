@@ -2,6 +2,7 @@
 
 :root {
     --purple: rgb(94, 55, 202);
+    --dark-purple: rgb(60, 35, 129);
 }
 
 .main-container {
@@ -12,13 +13,13 @@ h1, h2, p {
     color: white;
 }
 
-.my-btn {
-    background-color: rgb(0, 99, 21);
+.my-btn, .my-btn:focus {
+    background-color: var(--purple);
     color: white;
 }
 
 .my-btn:hover {
-    background-color: rgb(0, 68, 15);
+    background-color: var(--dark-purple);
     color: white;
     border-color: transparent;
 }
@@ -52,7 +53,7 @@ h1, h2, p {
 }
 
 .badge-color {
-    background-color: var(--purple);
+    background-color: rgb(177, 52, 2)
 }
 
 .spinner-color {
