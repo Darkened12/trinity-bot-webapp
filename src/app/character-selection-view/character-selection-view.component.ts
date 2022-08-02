@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { fadeInDownOnEnterAnimation } from 'angular-animations';
+import { fadeInDownOnEnterAnimation, fadeInUpOnEnterAnimation } from 'angular-animations';
 
 @Component({
   selector: 'app-character-selection-view',
   templateUrl: './character-selection-view.component.html',
   styleUrls: ['./character-selection-view.component.css'],
   animations: [
-    fadeInDownOnEnterAnimation()
+    fadeInDownOnEnterAnimation(),
+    fadeInUpOnEnterAnimation()
   ]
 })
 export class CharacterSelectionViewComponent implements OnInit {

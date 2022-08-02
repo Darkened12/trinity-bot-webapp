@@ -33,6 +33,7 @@ import { CharacterNavbarTopComponent } from './character-navbar-top/character-na
 import { CharactersViewComponent } from './characters-view/characters-view.component';
 import { CharactersToggleComponent } from './characters-view/characters-toggle/characters-toggle.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { FooterComponent } from './character-selection-view/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     CharacterNavbarTopComponent,
     CharactersViewComponent,
     CharactersToggleComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
