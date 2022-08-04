@@ -4,7 +4,7 @@
     left: 0;
     height: 100vh;
     width: 100vw;
-    background-image: url('/assets/background.webp');
+    background-image: url('https://kajun-bot.herokuapp.com/api/background.png');
     background-size: cover;
 
 }
