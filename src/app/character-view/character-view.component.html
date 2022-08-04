@@ -6,9 +6,13 @@
                     <div class="trinity-header">
                         <app-trinity-header class="d-none d-xl-block" [isSmall]="true"></app-trinity-header>
                     </div>
+
                     <div>
                         <a class="d-none d-xl-block btn my-btn m-4" [routerLink]="['/app/characters']">Select character</a>
-                    </div>              
+                    </div>  
+                    
+                    <hr class="d-none d-xl-block division">
+
                     <div class="movelist">    
                         <app-movelist [moveNames]="moveNamesSubject.asObservable()" class="d-none d-xl-block" ></app-movelist>
                     </div>

@@ -2,6 +2,7 @@
     <div [@fadeInRightOnEnter] style="max-height: 95%; max-width: 300px;" class="d-flex flex-column align-items-center mt-4 position-fixed overflow-auto">
         <img class="img-fluid p-2" src="{{ getIconUrl((character | async)?.icon)}}">
         <h2 class="p-2 text-center">{{ (character | async)?.name }}</h2>
+        <hr class="division">
         <div class="p-1">
             <ul class="list-group">
                 <li class="mb-2 mx-4">
