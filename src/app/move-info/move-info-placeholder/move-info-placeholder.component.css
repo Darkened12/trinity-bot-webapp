@@ -1,12 +1,12 @@
 .main-container {
-    max-width: 800px;
-    height: 570px;
+    max-width: 60vw;
+    height: 100vh;
 }
 
 @media screen and (max-width: 1200px) {
     .main-container {
         max-width: 800px;
-        height: 490px;
+        height: 100vh;
     }
 }
 
