@@ -1,0 +1,24 @@
+.background-div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-image: url('/assets/background.webp');
+    background-size: cover;
+
+}
+
+.center-div {
+    background-color: rgba(5, 5, 5, 0.8);
+}
+
+@media screen and (max-width: 575px) {
+    .center-div {
+        background-color: transparent;
+    }
+}
+
+.dark-text {
+    color: rgb(179, 179, 179);
+}

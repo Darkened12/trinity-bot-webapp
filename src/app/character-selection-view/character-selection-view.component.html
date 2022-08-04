@@ -1,10 +1,26 @@
-<div [@fadeInDownOnEnter] class="d-flex flex-column align-items-center justify-content-center">
-    <app-trinity-header></app-trinity-header>
-    <div style="height: 100px;" class="d-none d-md-block"></div>
-    <app-character-selection></app-character-selection>
-    <a class="btn my-btn" [routerLink]="['/app/characters']">...or select from the list</a>
-</div>
+<div class="background-div d-none d-sm-block"></div>
 
-<div [@fadeInUpOnEnter]>
-    <app-footer></app-footer>
+<div style="position: relative;">
+    <div [@fadeInOnEnter] style="height: 100vh;" class="d-flex align-items-center justify-content-center">
+        <div class="center-div d-flex flex-column p-4 rounded">
+            <div class="d-sm-none">
+                <div class="d-flex flex-row">
+                    <div style="width: 30px;"></div>
+                    <app-trinity-header></app-trinity-header>
+                </div>
+                
+            </div>
+
+            <div class="d-none d-sm-block">
+                <app-trinity-header></app-trinity-header>
+            </div>
+            
+            <h6 class="text-center dark-text">BlazBlue frame data</h6>
+            <app-character-selection class="pt-5"></app-character-selection>
+            <a class="btn my-btn mx-4" [routerLink]="['/app/characters']">Select from the list</a>
+            <div class="p-2"></div>
+            <hr class="dark-text">
+            <app-footer></app-footer>
+        </div>
+    </div>
 </div>

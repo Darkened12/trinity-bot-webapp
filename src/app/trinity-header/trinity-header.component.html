@@ -1,4 +1,4 @@
-<div class="d-sm-flex flex-row p-2 text-center align-items-end">
+<div class="d-flex flex-row p-2 text-center align-items-end">
     <img [attr.style]="getImgStyle()" class="border border-secondary rounded-circle" src="https://cdn.discordapp.com/app-icons/576357396809777153/d50202ebcec4a59c7cd2d45f999a7e39.png">
     <div *ngIf="isSmall else h1">
         <a [routerLink]="['/app']"><h5>Trinity Bot</h5></a>
@@ -6,7 +6,6 @@
     </div>
     <ng-template #h1>
         <a [routerLink]="['/app']"><h1 class="p-3 align-self-center">Trinity Bot</h1>   </a>
-        
     </ng-template>
 </div>
  
