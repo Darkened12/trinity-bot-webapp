@@ -1,27 +1,17 @@
-# TrinityFrameData
+# Trinity Web Application
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.3.
 
-## Development server
+## Link
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+http://www.trinity-bot.cf/app
 
-## Code scaffolding
+## Discord Bot
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+https://github.com/Darkened12/Trinity-Bot <br/>
+https://discord.com/oauth2/authorize?client_id=576357396809777153&permissions=0&scope=bot%20applications.commands
 
-## Build
+## Description
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Frontend was built with Angular 14, styling is done with Boostrap 5 + pure CSS3.<br/>
+Backend is a restful API and was built with Python using Quart micro framework and with SQLAlchemy using PostgreSQL.
