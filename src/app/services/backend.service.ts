@@ -7,7 +7,7 @@ import { ICharacter, ICharacterNames, IMove } from './backend.models';
   providedIn: 'root'
 })
 export class BackendService {
-  endpoint: string = 'https://kajun-bot.herokuapp.com/api/';
+  endpoint: string = 'http://www.trinity-bot.cf/api/';
   constructor(private http: HttpClient) { }
 
   getAllCharacterNames(): Observable<Array<ICharacterNames>> {
