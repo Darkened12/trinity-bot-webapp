@@ -25,7 +25,7 @@ export class BackendService {
   }
 
   parseSpriteUrl(url: string): string {
-    return `${this.endpoint}/${url}`;
+    return `${this.endpoint}${url}`;
     
   }
 
