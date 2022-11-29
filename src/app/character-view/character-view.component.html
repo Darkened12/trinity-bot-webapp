@@ -14,7 +14,9 @@
                     <hr class="d-none d-xl-block division">
 
                     <div class="movelist">    
-                        <app-movelist [moveNames]="moveNamesSubject.asObservable()" class="d-none d-xl-block" ></app-movelist>
+                        <app-movelist 
+                            [moveList]="moveList.asObservable()" 
+                            class="d-none d-xl-block" ></app-movelist>
                     </div>
                 </div>
             </div>  

@@ -41,3 +41,9 @@ export interface IMove {
   notes: string,
   sprite: string
 }
+
+export interface IMoveList {
+  type: string,
+  moveNames: string[]
+}
+

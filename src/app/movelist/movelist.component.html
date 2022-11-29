@@ -1,11 +1,29 @@
-<div *ngIf="moveNames | async; else movelistLoading">
+<div *ngIf="moveList | async; else movelistLoading">
     <div @fadeInLeftOnEnter style="max-height: 70vh;" class="container">
-        <div id="movelist-navbar" class="d-flex flex-column p-3 m-4 overflow-auto">
-            <ul class="list-group">
-                <li class="list-group-item text-center div-color" *ngFor="let moveName of moveNames | async">
-                    <a style="color: white;" class="btn" [fragment]="moveName" [routerLink]="['./']">{{ moveName }}</a>
-                </li>
-            </ul>
+        <div id="movelist-navbar" class="d-flex flex-column mt-5 overflow-auto">
+            <div class="accordion accordion-flush" id="movelistAccordion">
+                <div *ngFor="let movelist of (moveList | async); index as i">
+                    <div class="accordion-item div-color">
+
+                        <h2 class="accordion-header" [id]="'heading' + i">
+                            <button class="accordion-button collapsed  my-btn border border-dark" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse' + i">
+                            {{ movelist.type }}
+                            </button>
+                        </h2>
+
+                        <div [id]="'collapse' + i" class="accordion-collapse collapse" data-bs-parent="#movelistAccordion">
+                            <div class="accordion-body">
+                                <ul class="list-group list-group-flush">
+                                    <li style="margin-right: -20px; margin-left: -20px" class="list-group-item div-color text-center text-break" *ngFor="let moveName of movelist.moveNames">
+                                        <a style="color: white; font-size: 15px;" class="btn" [fragment]="moveName" [routerLink]="['./']">{{ moveName }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

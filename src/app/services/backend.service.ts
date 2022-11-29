@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, combineLatest} from 'rxjs';
-import { ICharacter, ICharacterNames, IMove } from './backend.models';
+import { ICharacter, ICharacterNames, IMove, IMoveList} from './backend.models';
 
 @Injectable({
   providedIn: 'root'
@@ -33,11 +33,13 @@ export class BackendService {
     return this.http.get<ICharacter>(`${this.endpoint}${gamePrefix}/${characterName}`);
   }
 
-  getAllMoveNamesFromCharacter(gamePrefix: string, characterName: string): Observable<Array<string>> {
-    return this.http.get<string[]>(
-      `${this.endpoint}${gamePrefix}/get_move_list?character_name=${characterName}`
-    )
+
+  getMoveList(gamePrefix: string, characterName: string): Observable<Array<IMoveList>> {
+    return this.http.get<Array<IMoveList>>(
+      `${this.endpoint}${gamePrefix}/${characterName}/get_move_list`
+    ) as Observable<Array<IMoveList>>
   }
+
 
   getAllMovesFromCharacter(gamePrefix: string, characterName: string): Observable<Array<IMove>> {
     return this.http.get<Array<IMove>>(`${this.endpoint}${gamePrefix}/${characterName}/get_all_moves`);
