@@ -24,8 +24,22 @@ export class MovelistComponent implements OnInit {
   ngOnInit(): void {
     this.moveList.pipe(
       map((moveList: IMoveList[]) => {
-        this.swapPositions(moveList, 2, 0)
-        this.swapPositions(moveList, 1, 2)
+        var isTag: Boolean = false;
+
+        for (let item of moveList) {
+          if (item['type'] === 'Normals and Partner Skills') {
+            isTag = true;
+            break;
+          }
+        }
+
+        if (isTag) {
+          this.swapPositions(moveList, 0, 1);
+        } else {
+          this.swapPositions(moveList, 2, 0);
+          this.swapPositions(moveList, 1, 2);
+        }
+
         return moveList
       })
     ).subscribe((moveList: IMoveList[]) => {
